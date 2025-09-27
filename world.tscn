@@ -1,3 +1,54 @@
-[gd_scene format=3 uid="uid://d0cobauyu36dg"]
+[gd_scene load_steps=8 format=3 uid="uid://d0cobauyu36dg"]
+
+[ext_resource type="PackedScene" uid="uid://dgd20gmn6koc2" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="Texture2D" uid="uid://cwxom7sksus1c" path="res://icon.svg" id="1_fj7yv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tlwt5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fj7yv")
+}],
+"loop": true,
+"name": &"cave_lobby",
+"speed": 5.0
+}]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_f3sb7"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fj7yv"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tlwt5"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_aqk2v"]
+normal = Vector2(-1, 0)
 
 [node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(960, 540.00006)
+scale = Vector2(15, 8.437501)
+sprite_frames = SubResource("SpriteFrames_tlwt5")
+animation = &"cave_lobby"
+
+[node name="player" parent="AnimatedSprite2D" instance=ExtResource("1_f3sb7")]
+position = Vector2(1.4666634, -11.851852)
+scale = Vector2(0.3333333, 0.5925925)
+
+[node name="border" type="StaticBody2D" parent="."]
+
+[node name="left" type="CollisionShape2D" parent="border"]
+shape = SubResource("WorldBoundaryShape2D_f3sb7")
+
+[node name="top" type="CollisionShape2D" parent="border"]
+shape = SubResource("WorldBoundaryShape2D_fj7yv")
+
+[node name="down" type="CollisionShape2D" parent="border"]
+position = Vector2(1920, 1080)
+shape = SubResource("WorldBoundaryShape2D_tlwt5")
+
+[node name="right" type="CollisionShape2D" parent="border"]
+position = Vector2(1920, 1080)
+shape = SubResource("WorldBoundaryShape2D_aqk2v")

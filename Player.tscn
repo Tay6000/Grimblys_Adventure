@@ -1,20 +1,73 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba5vrlb7ygq2w"]
+[gd_scene load_steps=10 format=3 uid="uid://dgd20gmn6koc2"]
 
-[ext_resource type="SpriteFrames" path="res://Sprites/" id="1_xhfnw"]
+[ext_resource type="Script" uid="uid://bev7bdwt4q82m" path="res://player.gd" id="1_hqtel"]
+[ext_resource type="Texture2D" uid="uid://dt1c74ephpb2x" path="res://Sprites/Jimmy_forward_stand.png" id="2_sweqy"]
+[ext_resource type="Texture2D" uid="uid://dolrfogpmj807" path="res://Sprites/Jimmy_backward_walk1.png" id="3_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://c5p82re0unnt2" path="res://Sprites/Jimmy_forward_walk1.png" id="3_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://donop8hfvdxks" path="res://Sprites/Jimmy_forward_walk2.png" id="4_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://8eha7tnv1yfd" path="res://Sprites/Jimmy_backward_stand.png" id="4_dw050"]
+[ext_resource type="Texture2D" uid="uid://dpjxyctu6xmj6" path="res://Sprites/Jimmy_backward_walk2.png" id="5_b26j0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kpjcp"]
-radius = 7.0
+[sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sweqy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dw050")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b26j0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dw050")
+}],
+"loop": true,
+"name": &"jimmywalk_backward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2hs0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sweqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sweqy")
+}],
+"loop": true,
+"name": &"jimmywalk_forward",
+"speed": 5.0
+}]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b26j0"]
+radius = 5.0
+height = 16.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="player" type="CharacterBody2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_hqtel")
+metadata/_edit_lock_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(439, 147)
-sprite_frames = ExtResource("1_xhfnw")
-animation = &"Jimmywalk"
-frame_progress = 0.49200377
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_dw050")
+animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(439, 148)
-shape = SubResource("CircleShape2D_kpjcp")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.1999998, 6.7999997)
+scale = Vector2(5, 5)
+shape = SubResource("CapsuleShape2D_b26j0")
