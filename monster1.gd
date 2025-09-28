@@ -43,6 +43,7 @@ func _process(delta: float) -> void:
 	
 func death():
 	queue_free()
+	get_parent().current_enemies -= 1
 	
 func take_damage(damage):
 	current_health = current_health - damage

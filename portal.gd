@@ -6,7 +6,7 @@ func _ready() -> void:
 	reset_portal()
 	
 func _process(delta) -> void:
-	if root_node.enemies == 0:
+	if root_node.current_enemies == 0:
 		show_portal()
 	else:
 		reset_portal()
