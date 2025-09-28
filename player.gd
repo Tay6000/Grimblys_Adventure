@@ -17,6 +17,8 @@ var screen_size
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 
+# updated comment that does nothing
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta) -> void:
 	if Input.is_action_pressed("move_up"):
