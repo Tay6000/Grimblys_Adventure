@@ -2,11 +2,11 @@ extends CharacterBody2D
 @onready var player = $"../player"
 @onready var thing = $"../cave"
 
-var min_health = 5 + round((thing.level/5)*5)
-var max_health = 10 + round((thing.level/5)*10)
+var min_health
+var max_health
 var health
-var min_dmg = 1 + round((thing.level/5)*1)
-var max_dmg = 3 + round((thing.level/5)*3)
+var min_dmg
+var max_dmg
 var dmg
 var reward_gold
 var current_health
@@ -15,6 +15,10 @@ var screen_size
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var min_health = 5 + round((thing.level/5)*5)
+	var max_health = 10 + round((thing.level/5)*10)
+	var min_dmg = 1 + round((thing.level/5)*1)
+	var max_dmg = 3 + round((thing.level/5)*3)
 	health = randi_range(min_health, max_health)
 	current_health = health
 	dmg = randi_range(min_dmg, max_dmg)
@@ -28,8 +32,14 @@ func _process(delta: float) -> void:
 	if current_health == 0 or current_health < 0:
 		death()
 	
+	$monster_health.text = str(current_health)
+	
 	velocity = position.direction_to(player.position) * speed
 	move_and_slide()
 	
 func death():
 	pass
+
+
+func _on_monster_1_collision_body_entered(body: Node2D) -> void:
+	player.damage_player(dmg)

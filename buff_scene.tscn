@@ -3,22 +3,33 @@
 [ext_resource type="Script" uid="uid://dlndb70fthy56" path="res://buff_scene.gd" id="1_gg64c"]
 
 [node name="buff_scene" type="Node2D"]
+position = Vector2(14, 87)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_gg64c")
 
 [node name="buff1" type="Button" parent="."]
-offset_left = 69.0
-offset_top = 135.0
-offset_right = 234.0
-offset_bottom = 359.0
+offset_left = 93.0
+offset_top = 194.0
+offset_right = 258.0
+offset_bottom = 289.0
+scale = Vector2(1.5, 1.5)
+text = "buff1"
+metadata/_edit_use_anchors_ = true
 
 [node name="buff2" type="Button" parent="."]
 offset_left = 489.0
 offset_top = 193.0
 offset_right = 682.0
 offset_bottom = 297.0
+scale = Vector2(1.5, 1.5)
+text = "buff2"
+metadata/_edit_use_anchors_ = true
 
 [node name="buff3" type="Button" parent="."]
 offset_left = 892.0
 offset_top = 204.0
 offset_right = 1090.0
 offset_bottom = 288.0
+scale = Vector2(1.5, 1.5)
+text = "buff3"
+metadata/_edit_use_anchors_ = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d0cobauyu36dg"]
+[gd_scene load_steps=21 format=3 uid="uid://d0cobauyu36dg"]
 
 [ext_resource type="Script" uid="uid://tilijiokuxa" path="res://world.gd" id="1_dwbse"]
 [ext_resource type="PackedScene" uid="uid://dgd20gmn6koc2" path="res://player.tscn" id="1_f3sb7"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://cppsusabp7giq" path="res://portal.gd" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cbm3x1q3ejb5g" path="res://Monster.tscn" id="6_gbfbk"]
 [ext_resource type="Script" uid="uid://cpsfnt080v2yr" path="res://fade.gd" id="7_pkg7o"]
-[ext_resource type="PackedScene" uid="uid://cw35ycke5hrph" path="res://buff_scene.tscn" id="10_wse8f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tlwt5"]
 animations = [{
@@ -178,16 +177,6 @@ metadata/_edit_lock_ = true
 libraries = {
 &"": SubResource("AnimationLibrary_ic0uy")
 }
-
-[node name="player_health" type="Label" parent="."]
-offset_left = 15.0
-offset_top = 16.0
-offset_right = 714.0
-offset_bottom = 182.0
-theme_override_font_sizes/font_size = 86
-text = "health"
-
-[node name="buff_scene" parent="." instance=ExtResource("10_wse8f")]
 
 [connection signal="area_shape_entered" from="portal" to="player" method="_on_portal_area_shape_entered"]
 [connection signal="body_entered" from="portal" to="player" method="_on_portal_body_entered"]

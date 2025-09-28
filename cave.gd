@@ -9,6 +9,7 @@ func _ready() -> void:
 	level = 0
 	enemies = 0
 	current_enemies = 0
+	play("cave_lobby")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

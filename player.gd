@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
+@onready var cave = $"../cave"
 @onready var fade_to_black = $"../fade"
 @onready var portal = $"../portal"
+@onready var player_health = $"../player_health"
+@onready var buff_scene = $"../buff_scene"
 
 var direction = "back"
 @export var base_speed = 400
@@ -33,6 +36,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta) -> void:
+	
+	if current_health == 0 or health < 0:
+		death()
+	
+	player_health.text = "Health: " + str(current_health)
+	
 	if Input.is_action_pressed("move_up"):
 		velocity.y = -1
 		direction = "back"
@@ -63,9 +72,6 @@ func _process(delta) -> void:
 			$PlayerSprite.play("grimbly_back_walk")
 	else:
 		$PlayerSprite.play("idle_" + direction)
-		
-	if health == 0 or health < 0:
-		pass
 		
 	move_and_slide()
 
@@ -99,7 +105,7 @@ func update_defense() -> void:
 		var defense_add = defense * buff
 		defense = defense + defense_add
 		
-func death() -> void:
+func death():
 	fade_to_black.fade_out()
 	fade_to_black.color_rect.visible = true
 	speed_buffs = []
@@ -108,8 +114,12 @@ func death() -> void:
 	update_defense()
 	update_health()
 	update_speed()
+	current_health = health
+	await get_tree().create_timer(2).timeout 
+	cave.play("cave_lobby")
 	position.x = 947
 	position.y = 810
+	fade_to_black.fade_in()
 
 func damage_player(damage) -> void:
 	current_health = current_health - damage
@@ -117,12 +127,14 @@ func damage_player(damage) -> void:
 func _on_portal_body_entered(body: Node2D) -> void:
 	fade_to_black.fade_out()
 	fade_to_black.color_rect.visible = true
-	
+	buff_scene.visible = true
+	buff_scene.do_buffs_all()
 	update_defense()
 	update_health()
 	update_speed()
 	portal.reset_portal()
 	await get_tree().create_timer(2).timeout 
+	cave.play("cave_level")
 	position.x = 947
 	position.y = 810
 	fade_to_black.fade_in()
