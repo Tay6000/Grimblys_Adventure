@@ -1,4 +1,6 @@
 extends CharacterBody2D
+@onready var fade_to_black = $"../fade_to_black"
+@onready var portal = $"../portal"
 
 var direction = "back"
 @export var base_speed = 400
@@ -13,6 +15,7 @@ var defense_upgrades = []
 var speed_buffs = []
 var health_buffs = []
 var defense_buffs = []
+var current_health
 var gold
 var screen_size
 
@@ -22,6 +25,8 @@ func _ready() -> void:
 	update_defense()
 	update_health()
 	update_speed()
+	current_health = health
+	gold = 0
 
 # updated comment that does nothing
 
@@ -103,3 +108,20 @@ func death() -> void:
 	update_speed()
 	position.x = 947
 	position.y = 810
+
+func damage_player(damage) -> void:
+	current_health = current_health - damage
+
+func _on_portal_body_entered(body: Node2D) -> void:
+	fade_to_black.fade_out()
+	fade_to_black.color_rect.visible = true
+	
+	update_defense()
+	update_health()
+	update_speed()
+	portal.rest_portal()
+	await get_tree().create_timer(2).timeout 
+	position.x = 947
+	position.y = 810
+	fade_to_black.fade_in()
+	portal.show_portal()
