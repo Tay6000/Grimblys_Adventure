@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5p82re0unnt2"
-path="res://.godot/imported/Jimmy_forward_walk1.png-394b58584ecdb99e583df3dd2555de22.ctex"
+uid="uid://bu0epb52ltkmo"
+path="res://.godot/imported/Grimbly_sprites.png-f207bb7968038403195a22587f9c7068.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Jimmy_forward_walk1.png"
-dest_files=["res://.godot/imported/Jimmy_forward_walk1.png-394b58584ecdb99e583df3dd2555de22.ctex"]
+source_file="res://Sprites/Grimbly_sprites.png"
+dest_files=["res://.godot/imported/Grimbly_sprites.png-f207bb7968038403195a22587f9c7068.ctex"]
 
 [params]
 

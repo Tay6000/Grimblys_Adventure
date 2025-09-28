@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0s21wmer676w"
-path="res://.godot/imported/Grimbly_test.jpeg-ad39001fa893377b521539d030fc2d2c.ctex"
+uid="uid://boxhtkxbu0efr"
+path="res://.godot/imported/cave_level.jpeg-928b702f8106b8ff8498b900e7ef41c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Music/Grimbly_test.jpeg"
-dest_files=["res://.godot/imported/Grimbly_test.jpeg-ad39001fa893377b521539d030fc2d2c.ctex"]
+source_file="res://Sprites/cave_level.jpeg"
+dest_files=["res://.godot/imported/cave_level.jpeg-928b702f8106b8ff8498b900e7ef41c6.ctex"]
 
 [params]
 
