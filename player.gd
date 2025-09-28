@@ -25,6 +25,7 @@ var defense_buffs = []
 var current_health
 var gold
 var screen_size
+var attack = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -66,6 +67,9 @@ func _process(delta) -> void:
 		direction = "left"
 	else:
 		velocity.x = 0
+		
+	if Input.is_action_pressed("attack"):
+		pass
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed

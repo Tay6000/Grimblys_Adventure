@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Monster
 @onready var player = $"../../player"
 @onready var thing = $"../../cave"
 @onready var spawn1 = $"../../spawner1"
@@ -41,9 +42,13 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	
 func death():
-	free()
+	queue_free()
 	
-
+func take_damage(damage):
+	current_health = current_health - damage
 
 func _on_monster_1_collision_body_entered(body: Node2D) -> void:
 	player.damage_player(dmg)
+	
+func _on_attack_body_entered(body: Node2D) -> void:
+	take_damage(player.attack)
