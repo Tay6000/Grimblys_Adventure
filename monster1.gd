@@ -1,12 +1,12 @@
 extends CharacterBody2D
-@onready var cave = $"../cave"
 @onready var player = $"../player"
+@onready var thing = $"../cave"
 
-var min_health = 5 + round((cave.level/5)*5)
-var max_health = 10 + round((cave.level/5)*10)
+var min_health = 5 + round((thing.level/5)*5)
+var max_health = 10 + round((thing.level/5)*10)
 var health
-var min_dmg = 1 + round((cave.level/5)*1)
-var max_dmg = 3 + round((cave.level/5)*3)
+var min_dmg = 1 + round((thing.level/5)*1)
+var max_dmg = 3 + round((thing.level/5)*3)
 var dmg
 var reward_gold
 var current_health

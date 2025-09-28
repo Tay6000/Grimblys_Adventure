@@ -8,7 +8,7 @@ func _ready() -> void:
 func _process(delta) -> void:
 	if root_node.enemies == 0:
 		show_portal()
-	
+
 func show_portal():
 	$portal_collision.disabled = false
 	$portal_sprite.visible = true

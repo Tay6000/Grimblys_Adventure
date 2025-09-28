@@ -1,4 +1,5 @@
 extends CharacterBody2D
+
 @onready var fade_to_black = $"../fade"
 @onready var portal = $"../portal"
 
@@ -109,7 +110,6 @@ func death() -> void:
 	update_speed()
 	position.x = 947
 	position.y = 810
-	fade_to_black.fade_in()
 
 func damage_player(damage) -> void:
 	current_health = current_health - damage
