@@ -1,12 +1,18 @@
 extends Area2D
 
+@onready var root_node = $"../cave"
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta) -> void:
-	pass
+	reset_portal()
 	
+func _process(delta) -> void:
+	if root_node.enemies == 0:
+		show_portal()
+	
+func show_portal():
+	$portal_collision.disabled = false
+	$portal_sprite.visible = true
+	
+func reset_portal():
+	$portal_collision.disabled = true
+	$portal_sprite.visible = false

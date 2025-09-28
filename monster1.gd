@@ -1,13 +1,35 @@
 extends CharacterBody2D
-@onready var root_node = $"."
+@onready var cave = $"../cave"
+@onready var player = $"../player"
 
-var min_health = 5 + (())
+var min_health = 5 + round((cave.level/5)*5)
+var max_health = 10 + round((cave.level/5)*10)
+var health
+var min_dmg = 1 + round((cave.level/5)*1)
+var max_dmg = 3 + round((cave.level/5)*3)
+var dmg
+var reward_gold
+var current_health
+var speed
+var screen_size
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	health = randi_range(min_health, max_health)
+	current_health = health
+	dmg = randi_range(min_dmg, max_dmg)
+	reward_gold = round((round(dmg + health))/2)
+	screen_size = get_viewport_rect().size
+	speed = 200
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if current_health == 0 or current_health < 0:
+		death()
+	
+	velocity = position.direction_to(player.position) * speed
+	move_and_slide()
+	
+func death():
 	pass

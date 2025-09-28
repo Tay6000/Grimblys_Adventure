@@ -1,11 +1,16 @@
 extends Node2D
 
+#buffs numbers: ["defense", "health", "attack", "speed", "cursed"]
+#cursed stats numbers: ["defense", "health", "speed"]
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func do_buffs_all():
+	do_buffs($buff_1)
+	do_buffs($buff_2)
+	do_buffs($buff_3)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func do_buffs(button):
+	var buff = randi_range(0, 4)
+	
+	if buff == 0:
+		button.Icon
+	
