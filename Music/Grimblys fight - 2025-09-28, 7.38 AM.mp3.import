@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cu2aip3tj7vjh"
+path="res://.godot/imported/Grimblys fight - 2025-09-28, 7.38 AM.mp3-afffab687ab723048701ad41cbac5bf2.mp3str"
+
+[deps]
+
+source_file="res://Music/Grimblys fight - 2025-09-28, 7.38 AM.mp3"
+dest_files=["res://.godot/imported/Grimblys fight - 2025-09-28, 7.38 AM.mp3-afffab687ab723048701ad41cbac5bf2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

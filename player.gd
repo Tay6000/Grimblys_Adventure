@@ -5,6 +5,9 @@ extends CharacterBody2D
 @onready var portal = $"../portal"
 @onready var player_health = $"../player_health"
 @onready var buff_scene = $"../buff_scene"
+@onready var level_music = $"../level_music"
+@onready var lobby_music = $"../lobby_music"
+@onready var player_gold = $"../player_gold"
 
 var direction = "back"
 @export var base_speed = 400
@@ -31,6 +34,9 @@ func _ready() -> void:
 	update_speed()
 	current_health = health
 	gold = 0
+	level_music.connect("finished", Callable(self,"_on_loop_sound").bind(level_music))
+	lobby_music.connect("finished", Callable(self,"_on_loop_lobby").bind(lobby_music))
+	lobby_music.play()
 
 # updated comment that does nothing
 
@@ -41,6 +47,7 @@ func _process(delta) -> void:
 		death()
 	
 	player_health.text = "Health: " + str(current_health)
+	player_gold.text = "Gold: " + str(gold)
 	
 	if Input.is_action_pressed("move_up"):
 		velocity.y = -1
@@ -120,6 +127,8 @@ func death():
 	position.x = 947
 	position.y = 810
 	fade_to_black.fade_in()
+	level_music.stop()
+	lobby_music.play()
 
 func damage_player(damage) -> void:
 	current_health = current_health - damage
@@ -127,6 +136,7 @@ func damage_player(damage) -> void:
 func _on_portal_body_entered(body: Node2D) -> void:
 	fade_to_black.fade_out()
 	fade_to_black.color_rect.visible = true
+	cave.level += 1
 	buff_scene.visible = true
 	buff_scene.do_buffs_all()
 	update_defense()
@@ -135,6 +145,15 @@ func _on_portal_body_entered(body: Node2D) -> void:
 	portal.reset_portal()
 	await get_tree().create_timer(2).timeout 
 	cave.play("cave_level")
+	cave.do_spawning()
 	position.x = 947
 	position.y = 810
 	fade_to_black.fade_in()
+	lobby_music.stop()
+	level_music.play()
+	
+func _on_loop_sound():
+	level_music.play()
+	
+func _on_loop_lobby():
+	lobby_music.play()

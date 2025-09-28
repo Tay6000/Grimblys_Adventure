@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d0cobauyu36dg"]
+[gd_scene load_steps=24 format=3 uid="uid://d0cobauyu36dg"]
 
 [ext_resource type="Script" uid="uid://tilijiokuxa" path="res://world.gd" id="1_dwbse"]
 [ext_resource type="PackedScene" uid="uid://dgd20gmn6koc2" path="res://player.tscn" id="1_f3sb7"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cbm3x1q3ejb5g" path="res://Monster.tscn" id="6_gbfbk"]
 [ext_resource type="Script" uid="uid://cpsfnt080v2yr" path="res://fade.gd" id="7_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://cw35ycke5hrph" path="res://buff_scene.tscn" id="10_wse8f"]
+[ext_resource type="AudioStream" uid="uid://cu2aip3tj7vjh" path="res://Music/Grimblys fight - 2025-09-28, 7.38 AM.mp3" id="11_ic0uy"]
+[ext_resource type="AudioStream" uid="uid://bx1eg1bncu4hv" path="res://Music/Grimblys stay - 2025-09-28, 8.00 AM.mp3" id="12_k3n1d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tlwt5"]
 animations = [{
@@ -186,6 +188,15 @@ theme_override_font_sizes/font_size = 86
 text = "health"
 metadata/_edit_lock_ = true
 
+[node name="player_gold" type="Label" parent="."]
+offset_left = 1543.0
+offset_top = 14.0
+offset_right = 2242.0
+offset_bottom = 180.0
+theme_override_font_sizes/font_size = 86
+text = "gold"
+metadata/_edit_lock_ = true
+
 [node name="buff_scene" parent="." instance=ExtResource("10_wse8f")]
 
 [node name="spawner1" type="Marker2D" parent="."]
@@ -203,6 +214,12 @@ metadata/_edit_lock_ = true
 [node name="spawner4" type="Marker2D" parent="."]
 position = Vector2(1573, 882)
 metadata/_edit_lock_ = true
+
+[node name="level_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_ic0uy")
+
+[node name="lobby_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_k3n1d")
 
 [connection signal="area_shape_entered" from="portal" to="player" method="_on_portal_area_shape_entered"]
 [connection signal="body_entered" from="portal" to="player" method="_on_portal_body_entered"]
