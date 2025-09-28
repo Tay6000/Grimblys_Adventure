@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw35ycke5hrph"]
+
+[ext_resource type="Script" uid="uid://dlndb70fthy56" path="res://buff_scene.gd" id="1_gg64c"]
+
+[node name="buff_scene" type="Node2D"]
+script = ExtResource("1_gg64c")
+
+[node name="buff1" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="buff2" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="buff3" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0

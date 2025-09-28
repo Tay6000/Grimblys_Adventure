@@ -1,7 +1,29 @@
-[gd_scene format=3 uid="uid://cbm3x1q3ejb5g"]
+[gd_scene load_steps=4 format=3 uid="uid://cbm3x1q3ejb5g"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[ext_resource type="Script" uid="uid://no1xrw73grct" path="res://monster1.gd" id="1_vb3nq"]
+[ext_resource type="Texture2D" uid="uid://cwxom7sksus1c" path="res://icon.svg" id="2_ssiii"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qheve"]
+size = Vector2(128, 127)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="monster1" type="CharacterBody2D"]
+script = ExtResource("1_vb3nq")
+
+[node name="monster1_sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 1)
+texture = ExtResource("2_ssiii")
+
+[node name="monster1_collision" type="Area2D" parent="monster1_sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="monster1_sprite/monster1_collision"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_qheve")
+
+[node name="monster_health" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -109.0
+offset_right = 20.0
+offset_bottom = -64.0
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1

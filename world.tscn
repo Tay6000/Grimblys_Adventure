@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0cobauyu36dg"]
+[gd_scene load_steps=14 format=3 uid="uid://d0cobauyu36dg"]
 
-[ext_resource type="PackedScene" uid="uid://dgd20gmn6koc2" path="res://Player.tscn" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://tilijiokuxa" path="res://world.gd" id="1_dwbse"]
+[ext_resource type="PackedScene" uid="uid://dgd20gmn6koc2" path="res://player.tscn" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://cwxom7sksus1c" path="res://icon.svg" id="1_fj7yv"]
 [ext_resource type="Texture2D" uid="uid://boxhtkxbu0efr" path="res://Sprites/cave_level.jpeg" id="1_tlwt5"]
 [ext_resource type="Script" uid="uid://c7yj4nue6vcbk" path="res://cave.gd" id="2_036b0"]
@@ -43,6 +44,7 @@ animations = [{
 size = Vector2(127.5, 125)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_dwbse")
 
 [node name="cave" type="AnimatedSprite2D" parent="."]
 position = Vector2(960, 539.75)
@@ -57,17 +59,21 @@ metadata/_edit_lock_ = true
 
 [node name="left" type="CollisionShape2D" parent="border"]
 shape = SubResource("WorldBoundaryShape2D_f3sb7")
+metadata/_edit_lock_ = true
 
 [node name="top" type="CollisionShape2D" parent="border"]
 shape = SubResource("WorldBoundaryShape2D_fj7yv")
+metadata/_edit_lock_ = true
 
 [node name="down" type="CollisionShape2D" parent="border"]
 position = Vector2(1920, 1080)
 shape = SubResource("WorldBoundaryShape2D_tlwt5")
+metadata/_edit_lock_ = true
 
 [node name="right" type="CollisionShape2D" parent="border"]
 position = Vector2(1920, 1080)
 shape = SubResource("WorldBoundaryShape2D_aqk2v")
+metadata/_edit_lock_ = true
 
 [node name="portal" type="Area2D" parent="."]
 script = ExtResource("3_tlwt5")
