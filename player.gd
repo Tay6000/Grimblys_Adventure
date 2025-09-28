@@ -23,6 +23,8 @@ func _ready() -> void:
 	update_health()
 	update_speed()
 
+# updated comment that does nothing
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta) -> void:
 	if Input.is_action_pressed("move_up"):
