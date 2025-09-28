@@ -1,5 +1,7 @@
 extends AnimatedSprite2D
 
+@export var monster1: PackedScene
+
 var enemies = 0
 var level = 0
 var current_enemies = 0

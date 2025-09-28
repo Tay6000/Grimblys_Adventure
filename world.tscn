@@ -55,21 +55,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_036b0"]
 size = Vector2(127.5, 125)
 
-[sub_resource type="Animation" id="Animation_gbfbk"]
-resource_name = "fade_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_ioo17"]
 length = 0.001
 tracks/0/type = "value"
@@ -100,6 +85,21 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_gbfbk"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ic0uy"]
 _data = {
 &"RESET": SubResource("Animation_ioo17"),
@@ -114,8 +114,9 @@ script = ExtResource("1_dwbse")
 position = Vector2(960, 539.75)
 scale = Vector2(1.133412, 1.133788)
 sprite_frames = SubResource("SpriteFrames_tlwt5")
-animation = &"cave_lobby"
+animation = &"cave_level"
 script = ExtResource("2_036b0")
+monster1 = ExtResource("6_gbfbk")
 metadata/_edit_lock_ = true
 
 [node name="border" type="StaticBody2D" parent="."]
@@ -154,9 +155,6 @@ position = Vector2(954, 542)
 shape = SubResource("RectangleShape2D_036b0")
 metadata/_edit_lock_ = true
 
-[node name="monster1" parent="." instance=ExtResource("6_gbfbk")]
-position = Vector2(314, 358)
-
 [node name="player" parent="." instance=ExtResource("1_f3sb7")]
 position = Vector2(947, 810)
 scale = Vector2(4, 4)
@@ -186,8 +184,25 @@ offset_right = 714.0
 offset_bottom = 182.0
 theme_override_font_sizes/font_size = 86
 text = "health"
+metadata/_edit_lock_ = true
 
 [node name="buff_scene" parent="." instance=ExtResource("10_wse8f")]
+
+[node name="spawner1" type="Marker2D" parent="."]
+position = Vector2(386, 193)
+metadata/_edit_lock_ = true
+
+[node name="spawner2" type="Marker2D" parent="."]
+position = Vector2(1616, 156)
+metadata/_edit_lock_ = true
+
+[node name="spawner3" type="Marker2D" parent="."]
+position = Vector2(387, 886)
+metadata/_edit_lock_ = true
+
+[node name="spawner4" type="Marker2D" parent="."]
+position = Vector2(1573, 882)
+metadata/_edit_lock_ = true
 
 [connection signal="area_shape_entered" from="portal" to="player" method="_on_portal_area_shape_entered"]
 [connection signal="body_entered" from="portal" to="player" method="_on_portal_body_entered"]
