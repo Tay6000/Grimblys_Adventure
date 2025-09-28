@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var level_music = $"../level_music"
 @onready var lobby_music = $"../lobby_music"
 @onready var player_gold = $"../player_gold"
+@onready var root_node = $".."
+@onready var attack = $"../attack"
 
 var direction = "back"
 @export var base_speed = 400
@@ -25,7 +27,6 @@ var defense_buffs = []
 var current_health
 var gold
 var screen_size
-var attack = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,7 +45,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta) -> void:
 	
-	if current_health == 0 or health < 0:
+	if current_health == 0 or current_health < 0:
 		death()
 	
 	player_health.text = "Health: " + str(current_health)
@@ -125,6 +126,7 @@ func death():
 	update_defense()
 	update_health()
 	update_speed()
+	attack.update_attack()
 	current_health = health
 	await get_tree().create_timer(2).timeout 
 	cave.play("cave_lobby")
@@ -140,16 +142,18 @@ func damage_player(damage) -> void:
 func _on_portal_body_entered(body: Node2D) -> void:
 	fade_to_black.fade_out()
 	fade_to_black.color_rect.visible = true
-	cave.level += 1
+	root_node.level += 1
 	buff_scene.visible = true
 	buff_scene.do_buffs_all()
 	update_defense()
 	update_health()
 	update_speed()
+	attack.update_attack()
 	portal.reset_portal()
+	current_health = health
 	await get_tree().create_timer(2).timeout 
 	cave.play("cave_level")
-	cave.do_spawning()
+	root_node.do_spawning()
 	position.x = 947
 	position.y = 810
 	fade_to_black.fade_in()

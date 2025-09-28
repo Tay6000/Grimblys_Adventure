@@ -111,10 +111,11 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70uel"]
-size = Vector2(111, 134)
+size = Vector2(129, 134)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_dwbse")
+monster1 = ExtResource("6_gbfbk")
 
 [node name="cave" type="AnimatedSprite2D" parent="."]
 position = Vector2(960, 539.75)
@@ -122,7 +123,6 @@ scale = Vector2(1.133412, 1.133788)
 sprite_frames = SubResource("SpriteFrames_tlwt5")
 animation = &"cave_level"
 script = ExtResource("2_036b0")
-monster1 = ExtResource("6_gbfbk")
 metadata/_edit_lock_ = true
 
 [node name="border" type="StaticBody2D" parent="."]
@@ -205,19 +205,15 @@ metadata/_edit_lock_ = true
 
 [node name="spawner1" type="Marker2D" parent="."]
 position = Vector2(386, 193)
-metadata/_edit_lock_ = true
 
 [node name="spawner2" type="Marker2D" parent="."]
-position = Vector2(1616, 156)
-metadata/_edit_lock_ = true
+position = Vector2(1586, 195)
 
 [node name="spawner3" type="Marker2D" parent="."]
 position = Vector2(387, 886)
-metadata/_edit_lock_ = true
 
 [node name="spawner4" type="Marker2D" parent="."]
 position = Vector2(1573, 882)
-metadata/_edit_lock_ = true
 
 [node name="level_music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_ic0uy")
@@ -233,6 +229,7 @@ script = ExtResource("13_2o6r5")
 texture = ExtResource("1_fj7yv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_70uel")
 
 [connection signal="area_shape_entered" from="portal" to="player" method="_on_portal_area_shape_entered"]

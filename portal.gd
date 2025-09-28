@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var root_node = $"../cave"
+@onready var root_node = $".."
 
 func _ready() -> void:
 	reset_portal()

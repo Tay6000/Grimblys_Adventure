@@ -1,8 +1,8 @@
 extends CharacterBody2D
 class_name Monster
-@onready var player = $"../../player"
-@onready var thing = $"../../cave"
-@onready var spawn1 = $"../../spawner1"
+@onready var player = $"../player"
+@onready var thing = $".."
+@onready var spawn1 = $"../spawner1"
 @onready var sprite = $monster1_sprite
 
 var min_health
@@ -14,7 +14,6 @@ var dmg
 var reward_gold
 var current_health
 var speed
-var screen_size
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,8 +24,7 @@ func _ready() -> void:
 	health = randi_range(min_health, max_health)
 	current_health = health
 	dmg = randi_range(min_dmg, max_dmg)
-	reward_gold = round((round(dmg + health))/2)
-	screen_size = get_viewport_rect().size
+	reward_gold = round((round(dmg + health))/5)
 	speed = 200
 	
 
@@ -44,6 +42,7 @@ func _process(delta: float) -> void:
 func death():
 	queue_free()
 	get_parent().current_enemies -= 1
+	player.gold += reward_gold
 	
 func take_damage(damage):
 	current_health = current_health - damage
