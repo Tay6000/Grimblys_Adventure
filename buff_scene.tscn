@@ -57,3 +57,5 @@ offset_top = 85.77778
 offset_right = 198.66656
 offset_bottom = 108.77778
 text = "test"
+
+[connection signal="pressed" from="buff1" to="." method="_on_buff_1_pressed"]

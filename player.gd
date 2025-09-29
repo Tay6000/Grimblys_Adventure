@@ -68,9 +68,6 @@ func _process(delta) -> void:
 		direction = "left"
 	else:
 		velocity.x = 0
-		
-	if Input.is_action_pressed("attack"):
-		pass
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
@@ -94,7 +91,7 @@ func update_speed() -> void:
 		speed = speed + upgrade
 	for i in speed_buffs:
 		var buff = speed_buffs[i]
-		var speed_add = speed * buff
+		var speed_add = round(speed * buff)
 		speed = speed + speed_add
 		
 func update_health() -> void:
@@ -104,7 +101,7 @@ func update_health() -> void:
 		health = health + upgrade
 	for i in health_buffs:
 		var buff = health_buffs[i]
-		var health_add = health * buff
+		var health_add = round(health * buff)
 		health = health + health_add
 		
 func update_defense() -> void:
@@ -114,7 +111,7 @@ func update_defense() -> void:
 		defense = defense + upgrade
 	for i in defense_buffs:
 		var buff = defense_buffs[i]
-		var defense_add = defense * buff
+		var defense_add = round(defense * buff)
 		defense = defense + defense_add
 		
 func death():
@@ -143,8 +140,6 @@ func _on_portal_body_entered(body: Node2D) -> void:
 	fade_to_black.fade_out()
 	fade_to_black.color_rect.visible = true
 	root_node.level += 1
-	buff_scene.visible = true
-	buff_scene.do_buffs_all()
 	update_defense()
 	update_health()
 	update_speed()
@@ -154,6 +149,9 @@ func _on_portal_body_entered(body: Node2D) -> void:
 	await get_tree().create_timer(2).timeout 
 	cave.play("cave_level")
 	root_node.do_spawning()
+	buff_scene.visible = false
+	buff_scene.buffs_active = false
+	buff_scene.deactivate_buttons()
 	position.x = 947
 	position.y = 810
 	fade_to_black.fade_in()

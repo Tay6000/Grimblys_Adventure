@@ -24,7 +24,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if $buff_scene.buffs_active == false && current_enemies == 0 && level > 0:
+		$buff_scene.visible = true
+		$buff_scene.do_buffs_all()
 
 func do_spawning():
 	enemies = level*2

@@ -37,5 +37,5 @@ func update_attack():
 		attack += upgrade
 	for i in attack_buffs:
 		var buff = attack_buffs[i]
-		buff = attack * buff
+		var attack_add = round(attack * buff)
 		attack = attack + buff

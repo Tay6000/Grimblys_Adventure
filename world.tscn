@@ -215,11 +215,11 @@ position = Vector2(387, 886)
 [node name="spawner4" type="Marker2D" parent="."]
 position = Vector2(1573, 882)
 
-[node name="level_music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_ic0uy")
-
 [node name="lobby_music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_k3n1d")
+
+[node name="level_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_ic0uy")
 
 [node name="attack" type="Area2D" parent="."]
 position = Vector2(1131, 796)
