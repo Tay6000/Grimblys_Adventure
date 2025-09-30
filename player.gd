@@ -27,6 +27,7 @@ var defense_buffs = []
 var current_health
 var gold
 var screen_size
+var alive
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,6 +40,7 @@ func _ready() -> void:
 	level_music.connect("finished", Callable(self,"_on_loop_sound").bind(level_music))
 	lobby_music.connect("finished", Callable(self,"_on_loop_lobby").bind(lobby_music))
 	lobby_music.play()
+	alive = false
 
 # updated comment that does nothing
 
@@ -117,6 +119,7 @@ func update_defense() -> void:
 func death():
 	fade_to_black.fade_out()
 	fade_to_black.color_rect.visible = true
+	root_node.level = 0
 	speed_buffs = []
 	defense_buffs = []
 	health_buffs = []
@@ -125,8 +128,12 @@ func death():
 	update_speed()
 	attack.update_attack()
 	current_health = health
+	alive = false
 	await get_tree().create_timer(2).timeout 
 	cave.play("cave_lobby")
+	buff_scene.visible = false
+	buff_scene.buffs_active = false
+	buff_scene.deactivate_buttons()
 	position.x = 947
 	position.y = 810
 	fade_to_black.fade_in()
@@ -146,6 +153,7 @@ func _on_portal_body_entered(body: Node2D) -> void:
 	attack.update_attack()
 	portal.reset_portal()
 	current_health = health
+	alive = true
 	await get_tree().create_timer(2).timeout 
 	cave.play("cave_level")
 	root_node.do_spawning()

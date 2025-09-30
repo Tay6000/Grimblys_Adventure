@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cw35ycke5hrph"]
+[gd_scene load_steps=5 format=3 uid="uid://cw35ycke5hrph"]
 
 [ext_resource type="Script" uid="uid://dlndb70fthy56" path="res://buff_scene.gd" id="1_gg64c"]
+[ext_resource type="Script" uid="uid://djst3t12dwpkl" path="res://buff_1.gd" id="2_13qcv"]
+[ext_resource type="Script" uid="uid://ch8dms7emtjj3" path="res://buff_2.gd" id="3_elkg0"]
+[ext_resource type="Script" uid="uid://b3j5hclh5iqkm" path="res://buff_3.gd" id="4_i3d1g"]
 
 [node name="buff_scene" type="Node2D"]
 position = Vector2(14, 87)
@@ -14,6 +17,8 @@ offset_right = 258.0
 offset_bottom = 289.0
 scale = Vector2(1.5, 1.5)
 text = "buff1"
+expand_icon = true
+script = ExtResource("2_13qcv")
 metadata/_edit_use_anchors_ = true
 
 [node name="buff1_lbl" type="Label" parent="buff1"]
@@ -31,6 +36,8 @@ offset_right = 682.0
 offset_bottom = 297.0
 scale = Vector2(1.5, 1.5)
 text = "buff2"
+expand_icon = true
+script = ExtResource("3_elkg0")
 metadata/_edit_use_anchors_ = true
 
 [node name="buff2_lbl" type="Label" parent="buff2"]
@@ -48,6 +55,8 @@ offset_right = 1090.0
 offset_bottom = 288.0
 scale = Vector2(1.5, 1.5)
 text = "buff3"
+expand_icon = true
+script = ExtResource("4_i3d1g")
 metadata/_edit_use_anchors_ = true
 
 [node name="buff3_lbl" type="Label" parent="buff3"]
@@ -58,4 +67,6 @@ offset_right = 198.66656
 offset_bottom = 108.77778
 text = "test"
 
+[connection signal="mouse_entered" from="buff1" to="buff1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="buff1" to="buff1" method="_on_mouse_exited"]
 [connection signal="pressed" from="buff1" to="." method="_on_buff_1_pressed"]

@@ -33,6 +33,8 @@ func _process(delta: float) -> void:
 	
 	if current_health == 0 or current_health < 0:
 		death()
+	if player.alive == false:
+		death()
 	
 	$monster_health.text = str(current_health)
 	
