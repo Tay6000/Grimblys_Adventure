@@ -14,7 +14,9 @@ func _process(delta) -> void:
 func show_portal():
 	$portal_collision.disabled = false
 	$portal_sprite.visible = true
+	$portal_sprite.play("portal_on")
 	
 func reset_portal():
 	$portal_collision.disabled = true
 	$portal_sprite.visible = false
+	$portal_sprite.stop()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw35ycke5hrph"]
+[gd_scene load_steps=6 format=3 uid="uid://cw35ycke5hrph"]
 
 [ext_resource type="Script" uid="uid://dlndb70fthy56" path="res://buff_scene.gd" id="1_gg64c"]
 [ext_resource type="Script" uid="uid://djst3t12dwpkl" path="res://buff_1.gd" id="2_13qcv"]
+[ext_resource type="Texture2D" uid="uid://7pxpjawn60v5" path="res://Sprites/Attack_buff1.png" id="2_elkg0"]
 [ext_resource type="Script" uid="uid://ch8dms7emtjj3" path="res://buff_2.gd" id="3_elkg0"]
 [ext_resource type="Script" uid="uid://b3j5hclh5iqkm" path="res://buff_3.gd" id="4_i3d1g"]
 
@@ -16,7 +17,7 @@ offset_top = 194.66666
 offset_right = 291.3333
 offset_bottom = 294.66666
 scale = Vector2(1.5, 1.5)
-text = "buff1"
+icon = ExtResource("2_elkg0")
 expand_icon = true
 script = ExtResource("2_13qcv")
 metadata/_edit_use_anchors_ = true
@@ -35,7 +36,6 @@ offset_top = 193.0
 offset_right = 682.0
 offset_bottom = 297.0
 scale = Vector2(1.5, 1.5)
-text = "buff2"
 expand_icon = true
 script = ExtResource("3_elkg0")
 metadata/_edit_use_anchors_ = true
@@ -49,22 +49,24 @@ offset_bottom = 129.88889
 text = "test"
 
 [node name="buff3" type="Button" parent="."]
+anchors_preset = -1
+anchor_top = -0.008641956
+anchor_bottom = 0.007818943
 offset_left = 892.0
 offset_top = 204.0
 offset_right = 1090.0
 offset_bottom = 288.0
 scale = Vector2(1.5, 1.5)
-text = "buff3"
 expand_icon = true
 script = ExtResource("4_i3d1g")
 metadata/_edit_use_anchors_ = true
 
 [node name="buff3_lbl" type="Label" parent="buff3"]
 layout_mode = 0
-offset_left = -1.333435
-offset_top = 85.77778
-offset_right = 198.66656
-offset_bottom = 108.77778
+offset_left = -0.44443768
+offset_top = 99.99998
+offset_right = 199.55556
+offset_bottom = 122.99998
 text = "test"
 
 [connection signal="mouse_entered" from="buff1" to="buff1" method="_on_mouse_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d0cobauyu36dg"]
+[gd_scene load_steps=28 format=3 uid="uid://d0cobauyu36dg"]
 
 [ext_resource type="Script" uid="uid://tilijiokuxa" path="res://world.gd" id="1_dwbse"]
 [ext_resource type="PackedScene" uid="uid://dgd20gmn6koc2" path="res://player.tscn" id="1_f3sb7"]
@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dck1jj8yx2xoo" path="res://Sprites/cave_lobby.jpeg" id="3_ioo17"]
 [ext_resource type="Script" uid="uid://cppsusabp7giq" path="res://portal.gd" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cbm3x1q3ejb5g" path="res://Monster.tscn" id="6_gbfbk"]
+[ext_resource type="Texture2D" uid="uid://b63vsqthcud1x" path="res://Sprites/portal1.png" id="7_hiqwa"]
 [ext_resource type="Script" uid="uid://cpsfnt080v2yr" path="res://fade.gd" id="7_pkg7o"]
+[ext_resource type="Texture2D" uid="uid://djiatoem1dirv" path="res://Sprites/portal2.png" id="8_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://cw35ycke5hrph" path="res://buff_scene.tscn" id="10_wse8f"]
 [ext_resource type="AudioStream" uid="uid://cu2aip3tj7vjh" path="res://Music/Grimblys fight - 2025-09-28, 7.38 AM.mp3" id="11_ic0uy"]
 [ext_resource type="AudioStream" uid="uid://bx1eg1bncu4hv" path="res://Music/Grimblys stay - 2025-09-28, 8.00 AM.mp3" id="12_k3n1d"]
@@ -47,16 +49,19 @@ normal = Vector2(-1, 0)
 [sub_resource type="SpriteFrames" id="SpriteFrames_aqk2v"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_fj7yv")
+"duration": 1.5,
+"texture": ExtResource("7_hiqwa")
+}, {
+"duration": 1.5,
+"texture": ExtResource("8_2u3nc")
 }],
 "loop": true,
 "name": &"portal_on",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_036b0"]
-size = Vector2(127.5, 125)
+[sub_resource type="CircleShape2D" id="CircleShape2D_udxuc"]
+radius = 65.76473
 
 [sub_resource type="Animation" id="Animation_ioo17"]
 length = 0.001
@@ -151,14 +156,16 @@ script = ExtResource("3_tlwt5")
 metadata/_edit_lock_ = true
 
 [node name="portal_sprite" type="AnimatedSprite2D" parent="portal"]
-position = Vector2(953, 541)
+position = Vector2(982, 544)
+scale = Vector2(0.43, 0.43)
 sprite_frames = SubResource("SpriteFrames_aqk2v")
 animation = &"portal_on"
+frame_progress = 0.29950747
 metadata/_edit_lock_ = true
 
 [node name="portal_collision" type="CollisionShape2D" parent="portal"]
 position = Vector2(954, 542)
-shape = SubResource("RectangleShape2D_036b0")
+shape = SubResource("CircleShape2D_udxuc")
 metadata/_edit_lock_ = true
 
 [node name="player" parent="." instance=ExtResource("1_f3sb7")]
