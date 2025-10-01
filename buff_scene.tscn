@@ -5,16 +5,16 @@
 [ext_resource type="Script" uid="uid://ch8dms7emtjj3" path="res://buff_2.gd" id="3_elkg0"]
 [ext_resource type="Script" uid="uid://b3j5hclh5iqkm" path="res://buff_3.gd" id="4_i3d1g"]
 
-[node name="buff_scene" type="Node2D"]
-position = Vector2(14, 87)
+[node name="buff_scene" type="CanvasLayer"]
 scale = Vector2(1.5, 1.5)
+transform = Transform2D(1.5, 0, 0, 1.5, 0, 0)
 script = ExtResource("1_gg64c")
 
 [node name="buff1" type="Button" parent="."]
-offset_left = 93.0
-offset_top = 194.0
-offset_right = 258.0
-offset_bottom = 289.0
+offset_left = 91.33334
+offset_top = 194.66666
+offset_right = 291.3333
+offset_bottom = 294.66666
 scale = Vector2(1.5, 1.5)
 text = "buff1"
 expand_icon = true
@@ -23,10 +23,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="buff1_lbl" type="Label" parent="buff1"]
 layout_mode = 0
-offset_left = -2.0000038
-offset_top = 99.111115
-offset_right = 165.55557
-offset_bottom = 122.111115
+offset_left = 3.5555482
+offset_top = 114.66667
+offset_right = 171.11111
+offset_bottom = 137.66669
 text = "test"
 
 [node name="buff2" type="Button" parent="."]
@@ -70,3 +70,9 @@ text = "test"
 [connection signal="mouse_entered" from="buff1" to="buff1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="buff1" to="buff1" method="_on_mouse_exited"]
 [connection signal="pressed" from="buff1" to="." method="_on_buff_1_pressed"]
+[connection signal="mouse_entered" from="buff2" to="buff2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="buff2" to="buff2" method="_on_mouse_exited"]
+[connection signal="pressed" from="buff2" to="." method="_on_buff_2_pressed"]
+[connection signal="mouse_entered" from="buff3" to="buff3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="buff3" to="buff3" method="_on_mouse_exited"]
+[connection signal="pressed" from="buff3" to="." method="_on_buff_3_pressed"]

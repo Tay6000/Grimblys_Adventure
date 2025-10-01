@@ -37,8 +37,6 @@ func _ready() -> void:
 	update_speed()
 	current_health = health
 	gold = 0
-	level_music.connect("finished", Callable(self,"_on_loop_sound").bind(level_music))
-	lobby_music.connect("finished", Callable(self,"_on_loop_lobby").bind(lobby_music))
 	lobby_music.play()
 	alive = false
 
@@ -166,8 +164,8 @@ func _on_portal_body_entered(body: Node2D) -> void:
 	lobby_music.stop()
 	level_music.play()
 	
-func _on_loop_sound():
+func _on_level_music_finished():
 	level_music.play()
 	
-func _on_loop_lobby():
+func _on_lobby_music_finished():
 	lobby_music.play()

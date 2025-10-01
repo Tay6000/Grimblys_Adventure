@@ -234,5 +234,7 @@ shape = SubResource("RectangleShape2D_70uel")
 
 [connection signal="area_shape_entered" from="portal" to="player" method="_on_portal_area_shape_entered"]
 [connection signal="body_entered" from="portal" to="player" method="_on_portal_body_entered"]
+[connection signal="finished" from="lobby_music" to="player" method="_on_lobby_music_finished"]
+[connection signal="finished" from="level_music" to="player" method="_on_level_music_finished"]
 [connection signal="area_shape_entered" from="attack" to="attack" method="_on_area_shape_entered"]
 [connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]

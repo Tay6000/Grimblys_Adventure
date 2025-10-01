@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 @onready var player = $"../player"
 @onready var attack = $"../attack"
@@ -114,11 +114,52 @@ func _on_buff_1_pressed() -> void:
 	if Input.is_action_just_pressed("select") && button_buff1.in_area == true:
 		if buff1 == 0:
 			player.defense_buffs.append(buff1_multiplier)
+			deactivate_buttons()
 		elif buff1 == 1:
 			player.health_buffs.append(buff1_multiplier)
+			deactivate_buttons()
 		elif buff1 == 2:
 			attack.attack_buffs.append(buff1_multiplier)
+			deactivate_buttons()
 		elif buff1 == 3:
 			player.speed_buffs.append(buff1_multiplier)
+			deactivate_buttons()
 		elif buff1 == 4:
 			print("cursed")
+			deactivate_buttons()
+
+func _on_buff_2_pressed() -> void:
+	print("buff2 pressed")
+	if buff2 == 0:
+		player.defense_buffs.append(buff2_multiplier)
+		deactivate_buttons()
+	elif buff2 == 1:
+		player.health_buffs.append(buff2_multiplier)
+		deactivate_buttons()
+	elif buff2 == 2:
+		attack.attack_buffs.append(buff2_multiplier)
+		deactivate_buttons()
+	elif buff2 == 3:
+		player.speed_buffs.append(buff2_multiplier)
+		deactivate_buttons()
+	elif buff2 == 4:
+		print("cursed")
+		deactivate_buttons()
+
+func _on_buff_3_pressed() -> void:
+	print("buff3 pressed")
+	if buff3 == 0:
+		player.defense_buffs.append(buff3_multiplier)
+		deactivate_buttons()
+	elif buff3 == 1:
+		player.health_buffs.append(buff3_multiplier)
+		deactivate_buttons()
+	elif buff3 == 2:
+		attack.attack_buffs.append(buff3_multiplier)
+		deactivate_buttons()
+	elif buff3 == 3:
+		player.speed_buffs.append(buff3_multiplier)
+		deactivate_buttons()
+	elif buff3 == 4:
+		print("cursed")
+		deactivate_buttons()
