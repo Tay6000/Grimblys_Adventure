@@ -39,6 +39,10 @@ func _process(delta: float) -> void:
 	$monster_health.text = str(current_health)
 	
 	velocity = position.direction_to(player.position) * speed
+	if velocity.x < 0:
+		$monster1_sprite.scale.x = 0.2
+	else:
+		$monster1_sprite.scale.x = -0.2
 	move_and_slide()
 	
 func death():
@@ -47,7 +51,7 @@ func death():
 	player.gold += reward_gold
 	
 func take_damage(damage):
-	current_health = current_health - damage
+	current_health = round(current_health - damage)
 
 func _on_monster_1_collision_body_entered(body: Node2D) -> void:
 	player.damage_player(dmg)

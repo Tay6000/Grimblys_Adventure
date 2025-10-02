@@ -144,7 +144,6 @@ func damage_player(damage) -> void:
 func _on_portal_body_entered(body: Node2D) -> void:
 	fade_to_black.fade_out()
 	fade_to_black.color_rect.visible = true
-	root_node.level += 1
 	update_defense()
 	update_health()
 	update_speed()
@@ -154,6 +153,7 @@ func _on_portal_body_entered(body: Node2D) -> void:
 	alive = true
 	await get_tree().create_timer(2).timeout 
 	cave.play("cave_level")
+	root_node.level += 1
 	root_node.do_spawning()
 	buff_scene.visible = false
 	buff_scene.buffs_active = false

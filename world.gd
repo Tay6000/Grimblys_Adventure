@@ -27,6 +27,13 @@ func _process(delta: float) -> void:
 	if $buff_scene.buffs_active == false && current_enemies == 0 && level > 0:
 		$buff_scene.visible = true
 		$buff_scene.do_buffs_all()
+	
+	if $player.alive == false:
+		$player_health.visible = false
+		$player_gold.visible = true
+	else:
+		$player_health.visible = true
+		$player_gold.visible = false
 
 func do_spawning():
 	enemies = level*2

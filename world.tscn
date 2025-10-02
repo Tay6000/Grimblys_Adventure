@@ -60,8 +60,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_udxuc"]
-radius = 65.76473
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hiqwa"]
+radius = 57.0
+height = 140.0
 
 [sub_resource type="Animation" id="Animation_ioo17"]
 length = 0.001
@@ -126,7 +127,7 @@ monster1 = ExtResource("6_gbfbk")
 position = Vector2(960, 539.75)
 scale = Vector2(1.133412, 1.133788)
 sprite_frames = SubResource("SpriteFrames_tlwt5")
-animation = &"cave_level"
+animation = &"cave_lobby"
 script = ExtResource("2_036b0")
 metadata/_edit_lock_ = true
 
@@ -160,12 +161,12 @@ position = Vector2(982, 544)
 scale = Vector2(0.43, 0.43)
 sprite_frames = SubResource("SpriteFrames_aqk2v")
 animation = &"portal_on"
-frame_progress = 0.29950747
+frame_progress = 0.018385915
 metadata/_edit_lock_ = true
 
 [node name="portal_collision" type="CollisionShape2D" parent="portal"]
-position = Vector2(954, 542)
-shape = SubResource("CircleShape2D_udxuc")
+position = Vector2(955, 535)
+shape = SubResource("CapsuleShape2D_hiqwa")
 metadata/_edit_lock_ = true
 
 [node name="player" parent="." instance=ExtResource("1_f3sb7")]
@@ -200,10 +201,10 @@ text = "health"
 metadata/_edit_lock_ = true
 
 [node name="player_gold" type="Label" parent="."]
-offset_left = 1543.0
-offset_top = 14.0
-offset_right = 2242.0
-offset_bottom = 180.0
+offset_left = 14.0
+offset_top = 16.0
+offset_right = 713.0
+offset_bottom = 182.0
 theme_override_font_sizes/font_size = 86
 text = "gold"
 metadata/_edit_lock_ = true
