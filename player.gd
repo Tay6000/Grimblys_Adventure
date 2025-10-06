@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var player_gold = $"../player_gold"
 @onready var root_node = $".."
 @onready var attack = $"../attack"
+@onready var shop = $"../shop"
 
 var direction = "back"
 @export var base_speed = 400
@@ -48,8 +49,8 @@ func _process(delta) -> void:
 	if current_health == 0 or current_health < 0:
 		death()
 	
-	player_health.text = "Health: " + str(current_health)
-	player_gold.text = "Gold: " + str(gold)
+	player_health.text = "Health: " + str(int(current_health))
+	player_gold.text = "Gold: " + str(int(gold))
 	
 	if Input.is_action_pressed("move_up"):
 		velocity.y = -1
@@ -169,3 +170,13 @@ func _on_level_music_finished():
 	
 func _on_lobby_music_finished():
 	lobby_music.play()
+
+
+func _on_eddy_body_entered(body: Node2D) -> void:
+	fade_to_black.fade_out()
+	await get_tree().create_timer(2).timeout
+	position.x = 947
+	position.y = 810
+	fade_to_black.fade_in()
+	shop.visible = true
+	root_node.disable_things()

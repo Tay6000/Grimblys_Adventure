@@ -12,6 +12,7 @@ var enemies = 0
 var level = 0
 var spawned_enemies = 0
 var current_enemies = 0
+var shop = load("res://shop.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,7 +21,8 @@ func _ready() -> void:
 	current_enemies = 0
 	$cave.play("cave_lobby")
 	$buff_scene.visible = false
-
+	$shop.visible = false
+	enable_things()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -52,7 +54,6 @@ func do_spawning():
 		await get_tree().create_timer(1).timeout 
 		spawned_enemies += 1
 
-	
 func reset_cave():
 	$cave.play("cave_lobby")
 	level = 0
@@ -62,3 +63,27 @@ func spawn_enemy(pos):
 	var instance = monster1.instantiate()
 	instance.position = (pos)
 	add_child(instance)
+
+func disable_things():
+	$cave.visible = false
+	$portal.visible = false
+	$portal/portal_collision.disabled = true
+	$player.visible = false
+	$player/player_collision.disabled = true
+	$attack/CollisionShape2D.disabled = true
+	$eddy.visible = false
+	$eddy/eddy_collision.disabled = true
+	$lobby_music.stop()
+	$level_music.stop()
+
+func enable_things():
+	$cave.visible = true
+	$portal.visible = true
+	$portal/portal_collision.disabled = false
+	$player.visible = true
+	$player/player_collision.disabled = false
+	$attack/CollisionShape2D.disabled = false
+	$eddy.visible = true
+	$eddy/eddy_collision.disabled = false
+	$lobby_music.play()
+	$level_music.stop()

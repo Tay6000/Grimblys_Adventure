@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d0cobauyu36dg"]
+[gd_scene load_steps=33 format=3 uid="uid://d0cobauyu36dg"]
 
 [ext_resource type="Script" uid="uid://tilijiokuxa" path="res://world.gd" id="1_dwbse"]
 [ext_resource type="PackedScene" uid="uid://dgd20gmn6koc2" path="res://player.tscn" id="1_f3sb7"]
@@ -16,6 +16,9 @@
 [ext_resource type="AudioStream" uid="uid://cu2aip3tj7vjh" path="res://Music/Grimblys fight - 2025-09-28, 7.38 AM.mp3" id="11_ic0uy"]
 [ext_resource type="AudioStream" uid="uid://bx1eg1bncu4hv" path="res://Music/Grimblys stay - 2025-09-28, 8.00 AM.mp3" id="12_k3n1d"]
 [ext_resource type="Script" uid="uid://cewer8fgpscpi" path="res://attack.gd" id="13_2o6r5"]
+[ext_resource type="Script" uid="uid://c30sety1nyjtg" path="res://eddy.gd" id="17_ikiii"]
+[ext_resource type="Texture2D" uid="uid://cmt6o6xm2layv" path="res://Sprites/eddy.png" id="17_udxuc"]
+[ext_resource type="PackedScene" uid="uid://b4e4q2mlvaixo" path="res://shop.tscn" id="19_cbp6q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tlwt5"]
 animations = [{
@@ -64,6 +67,12 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hiqwa"]
 radius = 57.0
 height = 140.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ikiii"]
+radius = 102.176315
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70uel"]
+size = Vector2(129, 134)
 
 [sub_resource type="Animation" id="Animation_ioo17"]
 length = 0.001
@@ -117,9 +126,6 @@ _data = {
 &"fade_out": SubResource("Animation_gbfbk")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_70uel"]
-size = Vector2(129, 134)
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_dwbse")
 monster1 = ExtResource("6_gbfbk")
@@ -170,11 +176,44 @@ position = Vector2(955, 535)
 shape = SubResource("CapsuleShape2D_hiqwa")
 metadata/_edit_lock_ = true
 
+[node name="eddy" type="Area2D" parent="."]
+script = ExtResource("17_ikiii")
+metadata/_edit_lock_ = true
+
+[node name="eddy_sprite" type="Sprite2D" parent="eddy"]
+position = Vector2(1573.0001, 115)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("17_udxuc")
+metadata/_edit_lock_ = true
+
+[node name="eddy_collision" type="CollisionShape2D" parent="eddy"]
+position = Vector2(1577, 122)
+shape = SubResource("CircleShape2D_ikiii")
+metadata/_edit_lock_ = true
+
 [node name="player" parent="." instance=ExtResource("1_f3sb7")]
 position = Vector2(947, 810)
 scale = Vector2(4, 4)
 
+[node name="attack" type="Area2D" parent="."]
+position = Vector2(1131, 796)
+script = ExtResource("13_2o6r5")
+
+[node name="Sprite2D" type="Sprite2D" parent="attack"]
+texture = ExtResource("1_fj7yv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_70uel")
+
+[node name="buff_scene" parent="." instance=ExtResource("10_wse8f")]
+visible = false
+
+[node name="shop" parent="." instance=ExtResource("19_cbp6q")]
+visible = false
+
 [node name="fade" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("7_pkg7o")
 
 [node name="ColorRect" type="ColorRect" parent="fade"]
@@ -210,8 +249,7 @@ offset_bottom = 182.0
 theme = ExtResource("11_2u3nc")
 theme_override_font_sizes/font_size = 120
 text = "gold"
-
-[node name="buff_scene" parent="." instance=ExtResource("10_wse8f")]
+metadata/_edit_lock_ = true
 
 [node name="spawner1" type="Marker2D" parent="."]
 position = Vector2(386, 193)
@@ -231,20 +269,10 @@ stream = ExtResource("12_k3n1d")
 [node name="level_music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_ic0uy")
 
-[node name="attack" type="Area2D" parent="."]
-position = Vector2(1131, 796)
-script = ExtResource("13_2o6r5")
-
-[node name="Sprite2D" type="Sprite2D" parent="attack"]
-texture = ExtResource("1_fj7yv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
-position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_70uel")
-
 [connection signal="area_shape_entered" from="portal" to="player" method="_on_portal_area_shape_entered"]
 [connection signal="body_entered" from="portal" to="player" method="_on_portal_body_entered"]
-[connection signal="finished" from="lobby_music" to="player" method="_on_lobby_music_finished"]
-[connection signal="finished" from="level_music" to="player" method="_on_level_music_finished"]
+[connection signal="body_entered" from="eddy" to="player" method="_on_eddy_body_entered"]
 [connection signal="area_shape_entered" from="attack" to="attack" method="_on_area_shape_entered"]
 [connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]
+[connection signal="finished" from="lobby_music" to="player" method="_on_lobby_music_finished"]
+[connection signal="finished" from="level_music" to="player" method="_on_level_music_finished"]

@@ -21,7 +21,7 @@ var buff3_multiplier = 0.00
 #cursed stats numbers: ["defense", "health", "speed"]
 
 func _ready() -> void:
-	button_buff1.connect("pressed", Callable(self, "_on_buff_1_pressed").bind(button_buff1))
+	activate_buttons()
 
 func do_buffs_all():
 	do_buffs_buff1()

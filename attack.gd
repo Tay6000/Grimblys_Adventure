@@ -38,4 +38,4 @@ func update_attack():
 	for i in attack_buffs:
 		var buff = attack_buffs[i]
 		var attack_add = round(attack * buff)
-		attack = attack + buff
+		attack = attack + attack_add

@@ -14,17 +14,19 @@ var dmg
 var reward_gold
 var current_health
 var speed
+var level = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	min_health = 5 + round((thing.level/5)*5)
-	max_health = 10 + round((thing.level/5)*10)
-	min_dmg = 1 + round((thing.level/5)*1)
-	max_dmg = 3 + round((thing.level/5)*3)
+	level = thing.level - 1
+	min_health = 5 + round((float(level)/5.0)*5)
+	max_health = 10 + round((float(level)/5.0)*10)
+	min_dmg = 1 + round((float(level)/5.0)*1)
+	max_dmg = 3 + round((float(level)/5.0)*3)
 	health = randi_range(min_health, max_health)
 	current_health = health
 	dmg = randi_range(min_dmg, max_dmg)
-	reward_gold = round((round(dmg + health))/5)
+	reward_gold = round(float(dmg + health)/5.0)
 	speed = 200
 	
 
@@ -36,7 +38,7 @@ func _process(delta: float) -> void:
 	if player.alive == false:
 		death()
 	
-	$monster_health.text = str(current_health)
+	$monster_health.text = str(int(current_health))
 	
 	velocity = position.direction_to(player.position) * speed
 	if velocity.x < 0:
