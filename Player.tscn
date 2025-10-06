@@ -116,7 +116,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"grimbly_back_walk",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -133,7 +133,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"grimbly_dash",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -150,7 +150,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"grimbly_front_walk",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -167,7 +167,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"grimbly_left_walk",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -184,7 +184,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"grimbly_right_walk",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -239,7 +239,8 @@ metadata/_edit_lock_ = true
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_dw050")
-animation = &"idle_back"
+animation = &"grimbly_dash"
+frame_progress = 0.043954875
 metadata/_edit_lock_ = true
 
 [node name="player_collision" type="CollisionShape2D" parent="."]

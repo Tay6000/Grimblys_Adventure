@@ -21,5 +21,6 @@ func _process(delta: float) -> void:
 		visible = false
 
 
-func _on_button_pressed() -> void:
-	print("test")
+func _on_button_pressed(button_path: NodePath):
+	var button = get_node(button_path)
+	print("test " + button.name)
