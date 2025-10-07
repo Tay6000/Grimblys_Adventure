@@ -5,14 +5,15 @@ extends Node2D
 @onready var spawn2 = $spawner2
 @onready var spawn3 = $spawner3
 @onready var spawn4 = $spawner4
+@onready var pause = $pause
 
 @export var monster1: PackedScene
 
+var paused = false
 var enemies = 0
 var level = 0
 var spawned_enemies = 0
 var current_enemies = 0
-var shop = load("res://shop.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +27,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed("esc") && $shop.visible == false:
+		pause_menu()
+	
 	if $buff_scene.buffs_active == false && current_enemies == 0 && level > 0:
 		$buff_scene.visible = true
 		$buff_scene.do_buffs_all()
@@ -87,3 +92,13 @@ func enable_things():
 	$eddy/eddy_collision.disabled = false
 	$lobby_music.play()
 	$level_music.stop()
+
+func pause_menu():
+	if paused:
+		pause.hide()
+		Engine.time_scale = 1
+	else:
+		pause.show()
+		Engine.time_scale = 0
+	
+	paused = !paused

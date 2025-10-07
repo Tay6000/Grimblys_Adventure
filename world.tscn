@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d0cobauyu36dg"]
+[gd_scene load_steps=34 format=3 uid="uid://d0cobauyu36dg"]
 
 [ext_resource type="Script" uid="uid://tilijiokuxa" path="res://world.gd" id="1_dwbse"]
 [ext_resource type="PackedScene" uid="uid://dgd20gmn6koc2" path="res://player.tscn" id="1_f3sb7"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://c30sety1nyjtg" path="res://eddy.gd" id="17_ikiii"]
 [ext_resource type="Texture2D" uid="uid://cmt6o6xm2layv" path="res://Sprites/eddy.png" id="17_udxuc"]
 [ext_resource type="PackedScene" uid="uid://b4e4q2mlvaixo" path="res://shop.tscn" id="19_cbp6q"]
+[ext_resource type="PackedScene" uid="uid://cf3s2tjcbdu4x" path="res://pause.tscn" id="20_26xuy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tlwt5"]
 animations = [{
@@ -68,8 +69,8 @@ animations = [{
 radius = 57.0
 height = 140.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ikiii"]
-radius = 102.176315
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26xuy"]
+size = Vector2(227, 170)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70uel"]
 size = Vector2(129, 134)
@@ -187,9 +188,8 @@ texture = ExtResource("17_udxuc")
 metadata/_edit_lock_ = true
 
 [node name="eddy_collision" type="CollisionShape2D" parent="eddy"]
-position = Vector2(1577, 122)
-shape = SubResource("CircleShape2D_ikiii")
-metadata/_edit_lock_ = true
+position = Vector2(1579.5, 115)
+shape = SubResource("RectangleShape2D_26xuy")
 
 [node name="player" parent="." instance=ExtResource("1_f3sb7")]
 position = Vector2(947, 810)
@@ -253,21 +253,34 @@ metadata/_edit_lock_ = true
 
 [node name="spawner1" type="Marker2D" parent="."]
 position = Vector2(386, 193)
+metadata/_edit_lock_ = true
 
 [node name="spawner2" type="Marker2D" parent="."]
 position = Vector2(1586, 195)
+metadata/_edit_lock_ = true
 
 [node name="spawner3" type="Marker2D" parent="."]
 position = Vector2(387, 886)
+metadata/_edit_lock_ = true
 
 [node name="spawner4" type="Marker2D" parent="."]
 position = Vector2(1573, 882)
+metadata/_edit_lock_ = true
 
 [node name="lobby_music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_k3n1d")
 
 [node name="level_music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_ic0uy")
+
+[node name="pause" parent="." instance=ExtResource("20_26xuy")]
+visible = false
+offset_left = 960.0
+offset_top = 539.0
+offset_right = 960.0
+offset_bottom = 539.0
+size_flags_horizontal = 8
+metadata/_edit_lock_ = true
 
 [connection signal="area_shape_entered" from="portal" to="player" method="_on_portal_area_shape_entered"]
 [connection signal="body_entered" from="portal" to="player" method="_on_portal_body_entered"]

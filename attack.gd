@@ -16,14 +16,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position = get_global_mouse_position()
 	
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") && get_parent().paused == false:
+		position = get_global_mouse_position()
 		$Sprite2D.visible = true
 		$CollisionShape2D.disabled = false
 		await get_tree().create_timer(0.2).timeout
 		$Sprite2D.visible = false
 		$CollisionShape2D.disabled = true
+	else:
+		position.x = -100
+		position.y = -100
 
 
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:

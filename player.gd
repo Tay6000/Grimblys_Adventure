@@ -27,6 +27,7 @@ var health_buffs = []
 var defense_buffs = []
 var current_health
 var gold
+var reward_gold
 var screen_size
 var alive
 
@@ -38,6 +39,7 @@ func _ready() -> void:
 	update_speed()
 	current_health = health
 	gold = 0
+	reward_gold = 0
 	lobby_music.play()
 	alive = false
 
@@ -119,6 +121,8 @@ func death():
 	fade_to_black.fade_out()
 	fade_to_black.color_rect.visible = true
 	root_node.level = 0
+	gold = gold + reward_gold
+	reward_gold = 0
 	speed_buffs = []
 	defense_buffs = []
 	health_buffs = []

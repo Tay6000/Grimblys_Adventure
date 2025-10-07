@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 func death():
 	queue_free()
 	get_parent().current_enemies -= 1
-	player.gold += reward_gold
+	player.reward_gold += reward_gold
 	
 func take_damage(damage):
 	current_health = round(current_health - damage)

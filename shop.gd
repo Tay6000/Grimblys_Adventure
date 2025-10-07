@@ -11,7 +11,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("test"):
+	if Input.is_action_just_pressed("esc") && visible == true:
 		fade_to_black.fade_out()
 		player.position.x = 947
 		player.position.y = 810

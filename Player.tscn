@@ -240,7 +240,7 @@ metadata/_edit_lock_ = true
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_dw050")
 animation = &"grimbly_dash"
-frame_progress = 0.043954875
+frame_progress = 0.49042866
 metadata/_edit_lock_ = true
 
 [node name="player_collision" type="CollisionShape2D" parent="."]
