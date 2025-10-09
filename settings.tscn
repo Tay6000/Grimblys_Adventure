@@ -7,7 +7,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_71mqq"]
 shader = ExtResource("2_cj1lu")
-shader_parameter/amount = 1.5000000712500001
+shader_parameter/amount = 1.50000007125
 
 [node name="settings" type="Control"]
 layout_mode = 3
@@ -33,10 +33,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -168.5
-offset_top = -117.0
-offset_right = 168.5
-offset_bottom = 117.0
+offset_left = -153.75
+offset_top = -100.5
+offset_right = 153.75
+offset_bottom = 100.5
 grow_horizontal = 2
 grow_vertical = 2
 

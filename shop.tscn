@@ -26,9 +26,9 @@ scale = Vector2(15, 8.4375)
 texture = ExtResource("2_blqjs")
 
 [node name="hats" type="Button" parent="."]
-offset_left = 241.37932
-offset_top = 164.91754
-offset_right = 593.7032
+offset_left = 250.37482
+offset_top = 178.4108
+offset_right = 593.7031
 offset_bottom = 298.35083
 theme = ExtResource("3_blqjs")
 text = "hats"
@@ -128,10 +128,10 @@ text = "fan hat"
 script = ExtResource("13_2807j")
 
 [node name="equipment" type="Button" parent="."]
-offset_left = 248.87556
+offset_left = 254.87256
 offset_top = 325.33734
-offset_right = 587.7062
-offset_bottom = 472.2639
+offset_right = 583.2084
+offset_bottom = 461.76913
 theme = ExtResource("3_blqjs")
 text = "shoes"
 
@@ -153,18 +153,18 @@ theme = ExtResource("3_blqjs")
 text = "attack upgrade"
 
 [node name="beards" type="Button" parent="."]
-offset_left = 241.37932
-offset_top = 497.75116
-offset_right = 577.2114
-offset_bottom = 628.186
+offset_left = 251.87407
+offset_top = 491.75412
+offset_right = 587.7062
+offset_bottom = 622.18896
 theme = ExtResource("3_blqjs")
 text = "beards"
 
 [node name="other" type="Button" parent="."]
-offset_left = 245.87706
-offset_top = 652.17395
-offset_right = 569.7152
-offset_bottom = 794.6027
+offset_left = 251.87405
+offset_top = 646.1769
+offset_right = 575.71216
+offset_bottom = 788.60565
 theme = ExtResource("3_blqjs")
 text = "other"
 

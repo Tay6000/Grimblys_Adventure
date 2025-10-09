@@ -14,10 +14,14 @@ transform = Transform2D(0.98, 0, 0, 0.98, 0, 0)
 script = ExtResource("1_gg64c")
 
 [node name="buff1" type="Button" parent="."]
-offset_left = 100.0
-offset_top = 193.0
-offset_right = 299.99997
-offset_bottom = 293.0
+anchors_preset = -1
+anchor_top = 0.1729024
+anchor_right = 0.006377578
+anchor_bottom = 0.13510951
+offset_left = 93.878
+offset_top = 115.51027
+offset_right = 293.7147
+offset_bottom = 214.72116
 scale = Vector2(1.5, 1.5)
 theme = ExtResource("2_52tlb")
 icon = ExtResource("2_elkg0")
@@ -27,34 +31,37 @@ script = ExtResource("2_13qcv")
 metadata/_edit_use_anchors_ = true
 
 [node name="buff1_lbl" type="Label" parent="buff1"]
-layout_mode = 0
-offset_left = 16.444437
-offset_top = 108.44445
-offset_right = 184.00002
-offset_bottom = 131.44446
+layout_mode = 1
+offset_left = 20.0
+offset_top = 96.0
+offset_right = 190.0
+offset_bottom = 120.0
 theme = ExtResource("4_52tlb")
 theme_override_font_sizes/font_size = 24
 text = "test"
 horizontal_alignment = 1
 
 [node name="buff2" type="Button" parent="."]
-offset_left = 500.0
-offset_top = 193.0
-offset_right = 700.0
-offset_bottom = 293.0
+anchors_preset = -1
+anchor_bottom = -0.039682515
+offset_left = 501.877
+offset_top = 240.0
+offset_right = 709.8771
+offset_bottom = 340.57144
 scale = Vector2(1.5, 1.5)
 theme = ExtResource("2_52tlb")
+icon = ExtResource("2_elkg0")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_elkg0")
 metadata/_edit_use_anchors_ = true
 
 [node name="buff2_lbl" type="Label" parent="buff2"]
-layout_mode = 0
-offset_left = 0.6666667
-offset_top = 106.88889
-offset_right = 194.00002
-offset_bottom = 129.88889
+layout_mode = 1
+offset_left = 20.0
+offset_top = 96.0
+offset_right = 190.0
+offset_bottom = 120.0
 theme = ExtResource("4_52tlb")
 theme_override_font_sizes/font_size = 24
 text = "test"
@@ -62,14 +69,15 @@ horizontal_alignment = 1
 
 [node name="buff3" type="Button" parent="."]
 anchors_preset = -1
-anchor_top = -0.008641956
-anchor_bottom = 0.007818943
-offset_left = 900.0
-offset_top = 202.33331
-offset_right = 1100.0
-offset_bottom = 284.55554
+anchor_top = -0.008641964
+anchor_bottom = -0.025701268
+offset_left = 909.877
+offset_top = 246.22221
+offset_right = 1117.8767
+offset_bottom = 330.50488
 scale = Vector2(1.5, 1.5)
 theme = ExtResource("2_52tlb")
+icon = ExtResource("2_elkg0")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("4_i3d1g")
@@ -77,14 +85,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="buff3_lbl" type="Label" parent="buff3"]
 layout_mode = 0
-offset_left = -0.44443768
-offset_top = 99.99998
-offset_right = 199.55556
-offset_bottom = 122.99998
+offset_left = 20.0
+offset_top = 96.0
+offset_right = 190.0
+offset_bottom = 120.0
 theme = ExtResource("4_52tlb")
 theme_override_font_sizes/font_size = 24
 text = "test"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="mouse_entered" from="buff1" to="buff1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="buff1" to="buff1" method="_on_mouse_exited"]
