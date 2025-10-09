@@ -18,7 +18,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("attack") && get_parent().paused == false:
-		position = get_global_mouse_position()
+		position = DisplayServer.mouse_get_position()
 		$Sprite2D.visible = true
 		$CollisionShape2D.disabled = false
 		await get_tree().create_timer(0.2).timeout

@@ -8,90 +8,58 @@ extends CanvasLayer
 @onready var label_buff1 = $buff1/buff1_lbl
 @onready var label_buff2 = $buff2/buff2_lbl
 @onready var label_buff3 = $buff3/buff3_lbl
+@onready var atk = load("res://Sprites/Attack_buff1.png")
+@onready var def = load("res://Sprites/defense_buff1.png")
+@onready var health = load("res://Sprites/health_buff1.png")
+@onready var speed = load("res://Sprites/speed_buff1.png")
 
 var buffs_active
-var buff1
-var buff2
-var buff3
-var buff1_multiplier = 0.00
-var buff2_multiplier = 0.00
-var buff3_multiplier = 0.00
+var buff
+var buff_multiplier = 0.00
 
 #buffs numbers: ["defense", "health", "attack", "speed", "cursed"]
 #cursed stats numbers: ["defense", "health", "speed"]
 
 func _ready() -> void:
 	activate_buttons()
+	do_buffs_all()
 
 func do_buffs_all():
-	do_buffs_buff1()
-	do_buffs_buff2()
-	do_buffs_buff3()
+	do_buffs(button_buff1, label_buff1)
+	do_buffs(button_buff2, label_buff2)
+	do_buffs(button_buff3, label_buff3)
 	activate_buttons()
 	buffs_active = true
 
-func do_buffs_buff1():
-	buff1 = randi_range(0, 4)
-	buff1_multiplier = randf_range(0.10, 0.50)
-	buff1_multiplier = snapped(buff1_multiplier, 0.01)
+func do_buffs(button : Node, label : Node):
+	buff = randi_range(0, 4)
+	buff_multiplier = snapped(randf_range(0.10, 0.50), 0.01)
 	
-	if buff1 == 0:
-		button_buff1.text = "defense"
-		label_buff1.text = "defense x" + str(buff1_multiplier)
-	elif buff1 == 1:
-		button_buff1.text = "health"
-		label_buff1.text = "health x" + str(buff1_multiplier)
-	elif buff1 == 2:
-		button_buff1.text = "attack"
-		label_buff1.text = "attack x" + str(buff1_multiplier)
-	elif buff1 == 3:
-		button_buff1.text = "speed"
-		label_buff1.text = "speed x" + str(buff1_multiplier)
-	elif buff1 == 4:
-		button_buff1.text = "cursed"
-		label_buff1.text = "cursed x" + str(buff1_multiplier)
-	
-func do_buffs_buff2():
-	buff2 = randi_range(0, 4)
-	buff2_multiplier = randf_range(0.1, 0.5)
-	buff2_multiplier = snapped(buff2_multiplier, 0.01)
-
-	if buff2 == 0:
-		button_buff2.text = "defense"
-		label_buff2.text = "defense x" + str(buff2_multiplier)
-	elif buff2 == 1:
-		button_buff2.text = "health"
-		label_buff2.text = "health x" + str(buff2_multiplier)
-	elif buff2 == 2:
-		button_buff2.text = "attack"
-		label_buff2.text = "attack x" + str(buff2_multiplier)
-	elif buff2 == 3:
-		button_buff2.text = "speed"
-		label_buff2.text = "speed x" + str(buff2_multiplier)
-	elif buff2 == 4:
-		button_buff2.text = "cursed"
-		label_buff2.text = "cursed (test) x" + str(buff2_multiplier)
-	
-func do_buffs_buff3():
-	buff3 = randi_range(0, 4)
-	buff3_multiplier = randf_range(0.1, 0.5)
-	buff3_multiplier = snapped(buff3_multiplier, 0.01)
-
-	if buff3 == 0:
-		button_buff3.text = "defense"
-		label_buff3.text = "defense x" + str(buff3_multiplier)
-	elif buff3 == 1:
-		button_buff3.text = "health"
-		label_buff3.text = "health x" + str(buff3_multiplier)
-	elif buff3 == 2:
-		button_buff3.text = "attack"
-		label_buff3.text = "attack x" + str(buff3_multiplier)
-	elif buff3 == 3:
-		button_buff3.text = "speed"
-		label_buff3.text = "speed x" + str(buff3_multiplier)
-	elif buff3 == 4:
-		button_buff3.text = "cursed"
-		label_buff3.text = "cursed (test) x" + str(buff3_multiplier)
+	if buff == 0:
+		button.icon = def
+		label.text = "defense x" + str(buff_multiplier)
+		button.buff = buff
+		button.multiplier = buff_multiplier
+	elif buff == 1:
+		button.icon = health
+		label.text = "health x" + str(buff_multiplier)
+		button.buff = buff
+		button.multiplier = buff_multiplier
+	elif buff == 2:
+		button.icon = atk
+		label.text = "attack x" + str(buff_multiplier)
+		button.buff = buff
+		button.multiplier = buff_multiplier
+	elif buff == 3:
+		button.icon = speed
+		label.text = "speed x" + str(buff_multiplier)
+		button.buff = buff
+		button.multiplier = buff_multiplier
+	elif buff == 4:
+		button.text = "cursed"
+		label.text = "cursed x" + str(buff_multiplier)
+		button.buff = buff
+		button.multiplier = buff_multiplier
 	
 func activate_buttons():
 	button_buff1.disabled = false
@@ -109,44 +77,17 @@ func deactivate_buttons():
 	button_buff2.visible = false
 	button_buff3.visible = false
 	
-func _on_buff_1_pressed() -> void:
-	print("buff1 pressed")
-	if buff1 == 0:
-		player.defense_buffs.append(buff1_multiplier)
-	elif buff1 == 1:
-		player.health_buffs.append(buff1_multiplier)
-	elif buff1 == 2:
-		attack.attack_buffs.append(buff1_multiplier)
-	elif buff1 == 3:
-		player.speed_buffs.append(buff1_multiplier)
-	elif buff1 == 4:
-		print("cursed")
-	deactivate_buttons()
-
-func _on_buff_2_pressed() -> void:
-	print("buff2 pressed")
-	if buff2 == 0:
-		player.defense_buffs.append(buff2_multiplier)
-	elif buff2 == 1:
-		player.health_buffs.append(buff2_multiplier)
-	elif buff2 == 2:
-		attack.attack_buffs.append(buff2_multiplier)
-	elif buff2 == 3:
-		player.speed_buffs.append(buff2_multiplier)
-	elif buff2 == 4:
-		print("cursed")
-	deactivate_buttons()
-
-func _on_buff_3_pressed() -> void:
-	print("buff3 pressed")
-	if buff3 == 0:
-		player.defense_buffs.append(buff3_multiplier)
-	elif buff3 == 1:
-		player.health_buffs.append(buff3_multiplier)
-	elif buff3 == 2:
-		attack.attack_buffs.append(buff3_multiplier)
-	elif buff3 == 3:
-		player.speed_buffs.append(buff3_multiplier)
-	elif buff3 == 4:
+func _on_button_pressed(button_path : NodePath):
+	var button = get_node(button_path)
+	print(button.name)
+	if button.buff == 0:
+		player.defense_buffs.append(button.multiplier)
+	elif button.buff == 1:
+		player.health_buffs.append(button.multiplier)
+	elif button.buff == 2:
+		attack.attack_buffs.append(button.multiplier)
+	elif button.buff == 3:
+		player.speed_buffs.append(button.multiplier)
+	elif button.buff == 4:
 		print("cursed")
 	deactivate_buttons()

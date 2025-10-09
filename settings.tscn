@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://uvx8vv1uji68"]
+
+[ext_resource type="Script" uid="uid://db4ppa2p3lprm" path="res://settings.gd" id="1_3ykye"]
+[ext_resource type="Shader" uid="uid://dfxheax5trafp" path="res://settings.gdshader" id="2_cj1lu"]
+[ext_resource type="Theme" uid="uid://bnjai01doufgj" path="res://themes/labels.tres" id="2_gc0em"]
+[ext_resource type="FontFile" uid="uid://blmhqmi7xa24l" path="res://Sprites/KiwiSoda.ttf" id="3_cj1lu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_71mqq"]
+shader = ExtResource("2_cj1lu")
+shader_parameter/amount = 1.5000000712500001
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3ykye")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_71mqq")
+layout_mode = 0
+offset_left = -2012.0
+offset_top = -1380.0
+offset_right = 3748.0
+offset_bottom = 2679.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.5
+offset_top = -117.0
+offset_right = 168.5
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="volume_label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_gc0em")
+theme_override_font_sizes/font_size = 32
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 20.0
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cj1lu")
+theme_override_font_sizes/font_size = 20
+text = "Mute"
+
+[node name="resolution_label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_gc0em")
+theme_override_font_sizes/font_size = 32
+text = "Resolution"
+horizontal_alignment = 1
+
+[node name="resolution" type="OptionButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cj1lu")
+theme_override_font_sizes/font_size = 20
+alignment = 1
+selected = 2
+item_count = 3
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/volume" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/resolution" to="." method="_on_resolution_item_selected"]

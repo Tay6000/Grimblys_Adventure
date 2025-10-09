@@ -5,20 +5,20 @@
 [ext_resource type="Theme" uid="uid://bnjai01doufgj" path="res://themes/labels.tres" id="3_qheve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qheve"]
-size = Vector2(212, 145)
+size = Vector2(182, 115)
 
 [node name="monster1" type="CharacterBody2D"]
 script = ExtResource("1_vb3nq")
 
 [node name="monster1_sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_ssiii")
 
 [node name="monster1_collision" type="Area2D" parent="."]
 scale = Vector2(0.5, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="monster1_collision"]
-position = Vector2(-2, 9.5)
+position = Vector2(-3, 4.5)
 shape = SubResource("RectangleShape2D_qheve")
 
 [node name="monster_health" type="Label" parent="."]

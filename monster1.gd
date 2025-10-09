@@ -14,7 +14,7 @@ var dmg
 var reward_gold
 var current_health
 var speed
-var level = 0
+var level
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,7 +27,7 @@ func _ready() -> void:
 	current_health = health
 	dmg = randi_range(min_dmg, max_dmg)
 	reward_gold = round(float(dmg + health)/5.0)
-	speed = 200
+	speed = 100
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cwxom7sksus1c" path="res://icon.svg" id="2_blqjs"]
 
 [node name="shop" type="CanvasLayer"]
+scale = Vector2(0.667, 0.667)
+transform = Transform2D(0.667, 0, 0, 0.667, 0, 0)
 script = ExtResource("1_e7rdd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -17,11 +19,4 @@ offset_top = 351.0
 offset_right = 1419.0
 offset_bottom = 558.0
 
-[node name="Button2" type="Button" parent="."]
-offset_left = 602.0
-offset_top = 744.0
-offset_right = 1445.0
-offset_bottom = 840.0
-
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed" binds= [NodePath("Button")]]
-[connection signal="pressed" from="Button2" to="." method="_on_button_pressed" binds= [NodePath("Button2")]]

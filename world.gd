@@ -6,6 +6,7 @@ extends Node2D
 @onready var spawn3 = $spawner3
 @onready var spawn4 = $spawner4
 @onready var pause = $pause
+@onready var settings = $settings
 
 @export var monster1: PackedScene
 
@@ -94,11 +95,11 @@ func enable_things():
 	$level_music.stop()
 
 func pause_menu():
-	if paused:
+	if paused && settings.visible == false:
 		pause.hide()
 		Engine.time_scale = 1
+		paused = false
 	else:
 		pause.show()
 		Engine.time_scale = 0
-	
-	paused = !paused
+		paused = true

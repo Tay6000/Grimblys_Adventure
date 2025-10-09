@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://d0cobauyu36dg"]
+[gd_scene load_steps=35 format=3 uid="uid://d0cobauyu36dg"]
 
 [ext_resource type="Script" uid="uid://tilijiokuxa" path="res://world.gd" id="1_dwbse"]
 [ext_resource type="PackedScene" uid="uid://dgd20gmn6koc2" path="res://player.tscn" id="1_f3sb7"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cmt6o6xm2layv" path="res://Sprites/eddy.png" id="17_udxuc"]
 [ext_resource type="PackedScene" uid="uid://b4e4q2mlvaixo" path="res://shop.tscn" id="19_cbp6q"]
 [ext_resource type="PackedScene" uid="uid://cf3s2tjcbdu4x" path="res://pause.tscn" id="20_26xuy"]
+[ext_resource type="PackedScene" uid="uid://uvx8vv1uji68" path="res://settings.tscn" id="21_bc84e"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tlwt5"]
 animations = [{
@@ -128,6 +129,7 @@ _data = {
 }
 
 [node name="Node2D" type="Node2D"]
+scale = Vector2(0.667, 0.667)
 script = ExtResource("1_dwbse")
 monster1 = ExtResource("6_gbfbk")
 
@@ -207,12 +209,12 @@ position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_70uel")
 
 [node name="buff_scene" parent="." instance=ExtResource("10_wse8f")]
-visible = false
 
 [node name="shop" parent="." instance=ExtResource("19_cbp6q")]
 visible = false
 
 [node name="fade" type="CanvasLayer" parent="."]
+layer = 2
 visible = false
 script = ExtResource("7_pkg7o")
 
@@ -279,8 +281,24 @@ offset_left = 960.0
 offset_top = 539.0
 offset_right = 960.0
 offset_bottom = 539.0
+scale = Vector2(1.5, 1.5)
 size_flags_horizontal = 8
 metadata/_edit_lock_ = true
+
+[node name="settings" parent="." instance=ExtResource("21_bc84e")]
+visible = false
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 960.00006
+offset_top = 539.0
+offset_right = 960.00006
+offset_bottom = 539.0
+scale = Vector2(1.5, 1.5)
+size_flags_horizontal = 4
 
 [connection signal="area_shape_entered" from="portal" to="player" method="_on_portal_area_shape_entered"]
 [connection signal="body_entered" from="portal" to="player" method="_on_portal_body_entered"]

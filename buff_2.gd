@@ -3,6 +3,9 @@ extends Button
 @onready var hover_texture = load("res://icon.svg")
 @onready var still_texture = load("res://Sprites/eddy.png")
 
+var multiplier : float
+var buff : int
+
 var in_area
 
 func _ready() -> void:

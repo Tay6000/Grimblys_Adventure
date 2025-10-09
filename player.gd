@@ -13,18 +13,18 @@ extends CharacterBody2D
 @onready var shop = $"../shop"
 
 var direction = "back"
-@export var base_speed = 400
-@export var base_health = 10
-@export var base_defense = 0
-var speed = base_speed
-var health = base_health
-var defense = base_defense
-var speed_upgrades = []
-var health_upgrades = []
-var defense_upgrades = []
-var speed_buffs = []
-var health_buffs = []
-var defense_buffs = []
+@export var base_speed : int
+@export var base_health : int
+@export var base_defense : int
+var speed
+var health
+var defense
+var speed_upgrades
+var health_upgrades
+var defense_upgrades
+var speed_buffs
+var health_buffs
+var defense_buffs
 var current_health
 var gold
 var reward_gold
@@ -33,15 +33,13 @@ var alive
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	screen_size = get_viewport_rect().size
+	create_new_player()
 	update_defense()
 	update_health()
 	update_speed()
 	current_health = health
-	gold = 0
 	reward_gold = 0
 	lobby_music.play()
-	alive = false
 
 # updated comment that does nothing
 
@@ -117,9 +115,26 @@ func update_defense() -> void:
 		var defense_add = round(defense * buff)
 		defense = defense + defense_add
 		
+func create_new_player():
+	base_speed = 250
+	base_health = 5
+	base_defense = 1
+	speed = base_speed
+	health = base_health
+	defense = base_defense
+	speed_upgrades = []
+	health_upgrades = []
+	defense_upgrades = []
+	speed_buffs = []
+	health_buffs = []
+	defense_buffs = []
+	gold = 0
+	alive = false
+	
 func death():
 	fade_to_black.fade_out()
 	fade_to_black.color_rect.visible = true
+	root_node.current_enemies = 3000
 	root_node.level = 0
 	gold = gold + reward_gold
 	reward_gold = 0
@@ -132,7 +147,8 @@ func death():
 	attack.update_attack()
 	current_health = health
 	alive = false
-	await get_tree().create_timer(2).timeout 
+	await get_tree().create_timer(2).timeout
+	root_node.current_enemies = 0
 	cave.play("cave_lobby")
 	buff_scene.visible = false
 	buff_scene.buffs_active = false
@@ -144,20 +160,25 @@ func death():
 	lobby_music.play()
 
 func damage_player(damage) -> void:
-	current_health = current_health - damage
+	var plyr_damage = round(damage - defense)
+	if plyr_damage > 0:
+		current_health = current_health - plyr_damage
+	else:
+		current_health -= 1
 
 func _on_portal_body_entered(body: Node2D) -> void:
 	fade_to_black.fade_out()
 	fade_to_black.color_rect.visible = true
+	root_node.current_enemies = 30000
 	update_defense()
 	update_health()
 	update_speed()
 	attack.update_attack()
-	portal.reset_portal()
 	current_health = health
 	alive = true
 	await get_tree().create_timer(2).timeout 
 	cave.play("cave_level")
+	root_node.current_enemies = 0
 	root_node.level += 1
 	root_node.do_spawning()
 	buff_scene.visible = false
@@ -174,7 +195,6 @@ func _on_level_music_finished():
 	
 func _on_lobby_music_finished():
 	lobby_music.play()
-
 
 func _on_eddy_body_entered(body: Node2D) -> void:
 	fade_to_black.fade_out()

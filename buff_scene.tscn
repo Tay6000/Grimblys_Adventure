@@ -8,8 +8,8 @@
 [ext_resource type="Script" uid="uid://b3j5hclh5iqkm" path="res://buff_3.gd" id="4_i3d1g"]
 
 [node name="buff_scene" type="CanvasLayer"]
-scale = Vector2(1.5, 1.5)
-transform = Transform2D(1.5, 0, 0, 1.5, 0, 0)
+scale = Vector2(0.98, 0.98)
+transform = Transform2D(0.98, 0, 0, 0.98, 0, 0)
 script = ExtResource("1_gg64c")
 
 [node name="buff1" type="Button" parent="."]
@@ -84,10 +84,10 @@ horizontal_alignment = 1
 
 [connection signal="mouse_entered" from="buff1" to="buff1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="buff1" to="buff1" method="_on_mouse_exited"]
-[connection signal="pressed" from="buff1" to="." method="_on_buff_1_pressed"]
+[connection signal="pressed" from="buff1" to="." method="_on_button_pressed" binds= [NodePath("buff1")]]
 [connection signal="mouse_entered" from="buff2" to="buff2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="buff2" to="buff2" method="_on_mouse_exited"]
-[connection signal="pressed" from="buff2" to="." method="_on_buff_2_pressed"]
+[connection signal="pressed" from="buff2" to="." method="_on_button_pressed" binds= [NodePath("buff2")]]
 [connection signal="mouse_entered" from="buff3" to="buff3" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="buff3" to="buff3" method="_on_mouse_exited"]
-[connection signal="pressed" from="buff3" to="." method="_on_buff_3_pressed"]
+[connection signal="pressed" from="buff3" to="." method="_on_button_pressed" binds= [NodePath("buff3")]]

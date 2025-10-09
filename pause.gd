@@ -3,6 +3,8 @@ extends Control
 @onready var player = $"../player"
 @onready var quit_button = $MarginContainer/VBoxContainer/quit
 @onready var resume_button = $MarginContainer/VBoxContainer/resume
+@onready var settings_button = $MarginContainer/VBoxContainer/settings
+@onready var settings_menu = $"../settings"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,3 +29,7 @@ func _on_quit_pressed() -> void:
 	else:
 		get_tree().quit()
 		print("save and quit")
+
+func _on_settings_pressed() -> void:
+	visible = false
+	settings_menu.visible = true
