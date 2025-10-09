@@ -6,8 +6,9 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	volume_slider.value = 15
-	resolution_selector.selected = 2
+	volume_slider.value = 10
+	resolution_selector.selected = 0
+	_on_resolution_item_selected(0)
 	visible = false
 
 

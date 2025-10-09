@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var player = $"../player"
-@onready var attack = $"../attack"
+@onready var attack = $"../player/attack"
 @onready var button_buff1 = $buff1
 @onready var button_buff2 = $buff2
 @onready var button_buff3 = $buff3
@@ -85,7 +85,7 @@ func _on_button_pressed(button_path : NodePath):
 	elif button.buff == 1:
 		player.health_buffs.append(button.multiplier)
 	elif button.buff == 2:
-		attack.attack_buffs.append(button.multiplier)
+		player.attack_buffs.append(button.multiplier)
 	elif button.buff == 3:
 		player.speed_buffs.append(button.multiplier)
 	elif button.buff == 4:

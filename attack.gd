@@ -1,44 +1,36 @@
 extends Area2D
 
 @onready var monster1_node = load("res://Monster.tscn")
-
-var attack_upgrades = []
-var attack_buffs = []
-var attack
-var base_attack = 3
+@onready var player = get_parent()
+@onready var root_node = $"../.."
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Sprite2D.visible = false
-	$CollisionShape2D.disabled = true
-	var attack = base_attack
+	$attack_sprite.visible = false
+	$attack_collision.set_deferred("disabled", true)
+	$attack_sprite.play("slash")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("attack") && get_parent().paused == false:
-		position = DisplayServer.mouse_get_position()
-		$Sprite2D.visible = true
-		$CollisionShape2D.disabled = false
+	if Input.is_action_just_pressed("attack") && root_node.paused == false:
+		if player.direction == "back":
+			rotation = 0
+		elif player.direction == "front":
+			rotation = 3.14159
+		elif player.direction == "right":
+			rotation = 1.5708
+		elif player.direction == "left":
+			rotation = -1.5708
+		
+		$attack_sprite.visible = true
+		$attack_collision.set_deferred("disabled", false)
 		await get_tree().create_timer(0.2).timeout
-		$Sprite2D.visible = false
-		$CollisionShape2D.disabled = true
-	else:
-		position.x = -100
-		position.y = -100
+		$attack_sprite.visible = false
+		$attack_collision.set_deferred("disabled", true)
 
 
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.get_parent() is Monster:
-		area.get_parent().take_damage(attack)
-
-func update_attack():
-	attack = base_attack
-	for i in attack_upgrades:
-		var upgrade = attack_upgrades[i]
-		attack += upgrade
-	for i in attack_buffs:
-		var buff = attack_buffs[i]
-		var attack_add = round(attack * buff)
-		attack = attack + attack_add
+		area.get_parent().take_damage(player.attack)

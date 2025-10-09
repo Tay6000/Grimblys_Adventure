@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4e4q2mlvaixo"]
+[gd_scene load_steps=15 format=3 uid="uid://b4e4q2mlvaixo"]
 
 [ext_resource type="Script" uid="uid://bt5rkltom6d1p" path="res://shop.gd" id="1_e7rdd"]
 [ext_resource type="Texture2D" uid="uid://cwxom7sksus1c" path="res://icon.svg" id="2_blqjs"]
+[ext_resource type="Theme" uid="uid://cm4xd3vagcyei" path="res://themes/button.tres" id="3_blqjs"]
+[ext_resource type="Script" uid="uid://wvglvb4dlm8d" path="res://shop_buttons/fixed_hat.gd" id="4_rrolr"]
+[ext_resource type="Script" uid="uid://dy1u7g6rxkggq" path="res://shop_buttons/fortified_hat.gd" id="5_gldgk"]
+[ext_resource type="Script" uid="uid://dwu0uwjntvtgt" path="res://shop_buttons/ceramic_hat.gd" id="6_763b7"]
+[ext_resource type="Script" uid="uid://drwer175v5cql" path="res://shop_buttons/steel_hat.gd" id="7_jtxfs"]
+[ext_resource type="Script" uid="uid://ekpaeostdx0c" path="res://shop_buttons/spell_hat.gd" id="8_tuxin"]
+[ext_resource type="Script" uid="uid://bo5kuhd45imlv" path="res://shop_buttons/wider_hat.gd" id="9_8lh4o"]
+[ext_resource type="Script" uid="uid://st8je6brl3o3" path="res://shop_buttons/taller_hat.gd" id="10_il0eq"]
+[ext_resource type="Script" uid="uid://b5u3mj5drvvma" path="res://shop_buttons/propeller_hat.gd" id="11_acxsc"]
+[ext_resource type="Script" uid="uid://c13up6hthodt5" path="res://shop_buttons/razor_hat.gd" id="12_k3iel"]
+[ext_resource type="Script" uid="uid://04kseee2c4dq" path="res://shop_buttons/fan_hat.gd" id="13_2807j"]
+[ext_resource type="Theme" uid="uid://bnjai01doufgj" path="res://themes/labels.tres" id="14_u7exk"]
 
 [node name="shop" type="CanvasLayer"]
 scale = Vector2(0.667, 0.667)
@@ -13,10 +25,180 @@ position = Vector2(960, 540)
 scale = Vector2(15, 8.4375)
 texture = ExtResource("2_blqjs")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 571.0
-offset_top = 351.0
-offset_right = 1419.0
-offset_bottom = 558.0
+[node name="hats" type="Button" parent="."]
+offset_left = 241.37932
+offset_top = 164.91754
+offset_right = 593.7032
+offset_bottom = 298.35083
+theme = ExtResource("3_blqjs")
+text = "hats"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed" binds= [NodePath("Button")]]
+[node name="fixed_hat" type="Button" parent="hats"]
+layout_mode = 1
+offset_left = 838.081
+offset_top = 448.27588
+offset_right = 1079.4604
+offset_bottom = 539.7301
+theme = ExtResource("3_blqjs")
+text = "hat upgrade"
+script = ExtResource("4_rrolr")
+
+[node name="fortified_hat" type="Button" parent="hats/fixed_hat"]
+layout_mode = 0
+offset_left = 17.990982
+offset_top = -158.92049
+offset_right = 227.88606
+offset_bottom = -80.95943
+theme = ExtResource("3_blqjs")
+text = "forified hat"
+script = ExtResource("5_gldgk")
+
+[node name="ceramic_hat" type="Button" parent="hats/fixed_hat/fortified_hat"]
+layout_mode = 0
+offset_left = -217.3913
+offset_top = -163.41838
+offset_right = -38.98053
+offset_bottom = -92.95381
+text = "ceramic hat"
+script = ExtResource("6_763b7")
+
+[node name="steel_hat" type="Button" parent="hats/fixed_hat/fortified_hat"]
+layout_mode = 0
+offset_left = 215.89206
+offset_top = -163.41833
+offset_right = 394.30283
+offset_bottom = -92.953766
+text = "steel_hat"
+script = ExtResource("7_jtxfs")
+
+[node name="spell_hat" type="Button" parent="hats/fixed_hat"]
+layout_mode = 0
+offset_left = -281.85913
+offset_top = -160.41978
+offset_right = -71.96405
+offset_bottom = -82.458725
+theme = ExtResource("3_blqjs")
+text = "spell hat"
+script = ExtResource("8_tuxin")
+
+[node name="wider_hat" type="Button" parent="hats/fixed_hat/spell_hat"]
+layout_mode = 0
+offset_left = 79.46032
+offset_top = -164.91754
+offset_right = 272.86365
+offset_bottom = -95.951965
+text = "wider hat"
+script = ExtResource("9_8lh4o")
+
+[node name="taller_hat" type="Button" parent="hats/fixed_hat/spell_hat"]
+layout_mode = 0
+offset_left = 491.75412
+offset_top = -161.91905
+offset_right = 691.15454
+offset_bottom = -92.95351
+text = "taller hat"
+script = ExtResource("10_il0eq")
+
+[node name="propeller_hat" type="Button" parent="hats/fixed_hat"]
+layout_mode = 0
+offset_left = 359.82007
+offset_top = -158.92053
+offset_right = 569.71515
+offset_bottom = -80.95947
+theme = ExtResource("3_blqjs")
+text = "propeller hat"
+script = ExtResource("11_acxsc")
+
+[node name="razor_hat" type="Button" parent="hats/fixed_hat/propeller_hat"]
+layout_mode = 0
+offset_left = -152.92355
+offset_top = -166.41684
+offset_right = 43.478302
+offset_bottom = -94.45279
+text = "razor hat"
+script = ExtResource("12_k3iel")
+
+[node name="fan_hat" type="Button" parent="hats/fixed_hat/propeller_hat"]
+layout_mode = 0
+offset_left = -566.7167
+offset_top = -170.91458
+offset_right = -370.31482
+offset_bottom = -98.95053
+text = "fan hat"
+script = ExtResource("13_2807j")
+
+[node name="equipment" type="Button" parent="."]
+offset_left = 248.87556
+offset_top = 325.33734
+offset_right = 587.7062
+offset_bottom = 472.2639
+theme = ExtResource("3_blqjs")
+text = "shoes"
+
+[node name="shoe_upgrade" type="Button" parent="equipment"]
+layout_mode = 0
+offset_left = 578.7107
+offset_top = 277.36136
+offset_right = 827.58624
+offset_bottom = 388.30588
+text = "shoe upgrade"
+
+[node name="attack_upgrade" type="Button" parent="equipment"]
+layout_mode = 0
+offset_left = 1080.9596
+offset_top = 287.8561
+offset_right = 1353.8232
+offset_bottom = 379.3104
+theme = ExtResource("3_blqjs")
+text = "attack upgrade"
+
+[node name="beards" type="Button" parent="."]
+offset_left = 241.37932
+offset_top = 497.75116
+offset_right = 577.2114
+offset_bottom = 628.186
+theme = ExtResource("3_blqjs")
+text = "beards"
+
+[node name="other" type="Button" parent="."]
+offset_left = 245.87706
+offset_top = 652.17395
+offset_right = 569.7152
+offset_bottom = 794.6027
+theme = ExtResource("3_blqjs")
+text = "other"
+
+[node name="shop_text" type="Label" parent="."]
+offset_left = 787.10645
+offset_top = 791.6042
+offset_right = 1643.1785
+offset_bottom = 947.52625
+theme = ExtResource("14_u7exk")
+theme_override_font_sizes/font_size = 48
+text = "Welcome to the shop!"
+horizontal_alignment = 1
+
+[node name="player_gold" type="Label" parent="."]
+offset_left = 14.0
+offset_top = 16.0
+offset_right = 713.0
+offset_bottom = 182.0
+theme = ExtResource("14_u7exk")
+theme_override_font_sizes/font_size = 120
+text = "gold"
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="hats" to="." method="_on_tab_pressed" binds= [NodePath("hats")]]
+[connection signal="pressed" from="hats/fixed_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat")]]
+[connection signal="pressed" from="hats/fixed_hat/fortified_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/fortified_hat")]]
+[connection signal="pressed" from="hats/fixed_hat/fortified_hat/ceramic_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/fortified_hat/ceramic_hat")]]
+[connection signal="pressed" from="hats/fixed_hat/fortified_hat/steel_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/fortified_hat/steel_hat")]]
+[connection signal="pressed" from="hats/fixed_hat/spell_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/spell_hat")]]
+[connection signal="pressed" from="hats/fixed_hat/spell_hat/wider_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/spell_hat/wider_hat")]]
+[connection signal="pressed" from="hats/fixed_hat/spell_hat/taller_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/spell_hat/taller_hat")]]
+[connection signal="pressed" from="hats/fixed_hat/propeller_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/propeller_hat")]]
+[connection signal="pressed" from="hats/fixed_hat/propeller_hat/razor_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/propeller_hat/razor_hat")]]
+[connection signal="pressed" from="hats/fixed_hat/propeller_hat/fan_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/propeller_hat/fan_hat")]]
+[connection signal="pressed" from="equipment" to="." method="_on_tab_pressed" binds= [NodePath("equipment")]]
+[connection signal="pressed" from="beards" to="." method="_on_tab_pressed" binds= [NodePath("beards")]]
+[connection signal="pressed" from="other" to="." method="_on_tab_pressed" binds= [NodePath("other")]]

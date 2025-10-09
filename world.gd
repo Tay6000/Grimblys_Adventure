@@ -76,7 +76,6 @@ func disable_things():
 	$portal/portal_collision.disabled = true
 	$player.visible = false
 	$player/player_collision.disabled = true
-	$attack/CollisionShape2D.disabled = true
 	$eddy.visible = false
 	$eddy/eddy_collision.disabled = true
 	$lobby_music.stop()
@@ -88,7 +87,6 @@ func enable_things():
 	$portal/portal_collision.disabled = false
 	$player.visible = true
 	$player/player_collision.disabled = false
-	$attack/CollisionShape2D.disabled = false
 	$eddy.visible = true
 	$eddy/eddy_collision.disabled = false
 	$lobby_music.play()

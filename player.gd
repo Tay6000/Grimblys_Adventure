@@ -9,22 +9,26 @@ extends CharacterBody2D
 @onready var lobby_music = $"../lobby_music"
 @onready var player_gold = $"../player_gold"
 @onready var root_node = $".."
-@onready var attack = $"../attack"
+@onready var attack_node = $attack
 @onready var shop = $"../shop"
 
 var direction = "back"
 @export var base_speed : int
 @export var base_health : int
 @export var base_defense : int
+@export var base_attack : int
 var speed
 var health
 var defense
+var attack
 var speed_upgrades
 var health_upgrades
 var defense_upgrades
+var attack_upgrades
 var speed_buffs
 var health_buffs
 var defense_buffs
+var attack_buffs
 var current_health
 var gold
 var reward_gold
@@ -115,19 +119,33 @@ func update_defense() -> void:
 		var defense_add = round(defense * buff)
 		defense = defense + defense_add
 		
+func update_attack():
+	attack = base_attack
+	for i in attack_upgrades:
+		var upgrade = attack_upgrades[i]
+		attack += upgrade
+	for i in attack_buffs:
+		var buff = attack_buffs[i]
+		var attack_add = round(attack * buff)
+		attack = attack + attack_add
+		
 func create_new_player():
-	base_speed = 250
-	base_health = 5
-	base_defense = 1
+	base_speed = 200
+	base_health = 3
+	base_defense = 0
+	base_attack = 1
 	speed = base_speed
 	health = base_health
 	defense = base_defense
+	attack = base_attack
 	speed_upgrades = []
 	health_upgrades = []
 	defense_upgrades = []
+	attack_upgrades = []
 	speed_buffs = []
 	health_buffs = []
 	defense_buffs = []
+	attack_buffs = []
 	gold = 0
 	alive = false
 	
@@ -144,7 +162,7 @@ func death():
 	update_defense()
 	update_health()
 	update_speed()
-	attack.update_attack()
+	update_attack()
 	current_health = health
 	alive = false
 	await get_tree().create_timer(2).timeout
@@ -173,7 +191,7 @@ func _on_portal_body_entered(body: Node2D) -> void:
 	update_defense()
 	update_health()
 	update_speed()
-	attack.update_attack()
+	update_attack()
 	current_health = health
 	alive = true
 	await get_tree().create_timer(2).timeout 

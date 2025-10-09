@@ -1,7 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://dgd20gmn6koc2"]
+[gd_scene load_steps=33 format=3 uid="uid://dgd20gmn6koc2"]
 
 [ext_resource type="Script" uid="uid://bev7bdwt4q82m" path="res://player.gd" id="1_hqtel"]
 [ext_resource type="Texture2D" uid="uid://bu0epb52ltkmo" path="res://Sprites/Grimbly_sprites.png" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://cewer8fgpscpi" path="res://attack.gd" id="3_hqtel"]
+[ext_resource type="Texture2D" uid="uid://cwxom7sksus1c" path="res://icon.svg" id="4_sweqy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
 atlas = ExtResource("2_onrkg")
@@ -231,6 +233,21 @@ animations = [{
 radius = 1.4799999
 height = 6.24
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hs0m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_sweqy")
+}],
+"loop": true,
+"name": &"slash",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1jxqw"]
+radius = 5.999999
+height = 36.399998
+
 [node name="player" type="CharacterBody2D"]
 scale = Vector2(5, 5)
 script = ExtResource("1_hqtel")
@@ -240,10 +257,26 @@ metadata/_edit_lock_ = true
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_dw050")
 animation = &"grimbly_front_walk"
-frame_progress = 0.66384846
+frame_progress = 0.28505582
 metadata/_edit_lock_ = true
 
 [node name="player_collision" type="CollisionShape2D" parent="."]
 position = Vector2(1.1920929e-07, 2.2000003)
 scale = Vector2(5, 5)
 shape = SubResource("CapsuleShape2D_b26j0")
+
+[node name="attack" type="Area2D" parent="."]
+script = ExtResource("3_hqtel")
+
+[node name="attack_sprite" type="AnimatedSprite2D" parent="attack"]
+position = Vector2(0, -38.799995)
+scale = Vector2(0.10156247, 0.29414058)
+sprite_frames = SubResource("SpriteFrames_2hs0m")
+animation = &"slash"
+
+[node name="attack_collision" type="CollisionShape2D" parent="attack"]
+position = Vector2(1.4901161e-08, -39.2)
+shape = SubResource("CapsuleShape2D_1jxqw")
+disabled = true
+
+[connection signal="area_shape_entered" from="attack" to="attack" method="_on_area_shape_entered"]

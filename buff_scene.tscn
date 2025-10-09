@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cw35ycke5hrph"]
+[gd_scene load_steps=8 format=3 uid="uid://cw35ycke5hrph"]
 
 [ext_resource type="Script" uid="uid://dlndb70fthy56" path="res://buff_scene.gd" id="1_gg64c"]
 [ext_resource type="Script" uid="uid://djst3t12dwpkl" path="res://buff_1.gd" id="2_13qcv"]
+[ext_resource type="Theme" uid="uid://cm4xd3vagcyei" path="res://themes/button.tres" id="2_52tlb"]
 [ext_resource type="Texture2D" uid="uid://7pxpjawn60v5" path="res://Sprites/Attack_buff1.png" id="2_elkg0"]
 [ext_resource type="Script" uid="uid://ch8dms7emtjj3" path="res://buff_2.gd" id="3_elkg0"]
 [ext_resource type="Theme" uid="uid://bnjai01doufgj" path="res://themes/labels.tres" id="4_52tlb"]
@@ -18,6 +19,7 @@ offset_top = 193.0
 offset_right = 299.99997
 offset_bottom = 293.0
 scale = Vector2(1.5, 1.5)
+theme = ExtResource("2_52tlb")
 icon = ExtResource("2_elkg0")
 icon_alignment = 1
 expand_icon = true
@@ -41,6 +43,7 @@ offset_top = 193.0
 offset_right = 700.0
 offset_bottom = 293.0
 scale = Vector2(1.5, 1.5)
+theme = ExtResource("2_52tlb")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_elkg0")
@@ -66,6 +69,7 @@ offset_top = 202.33331
 offset_right = 1100.0
 offset_bottom = 284.55554
 scale = Vector2(1.5, 1.5)
+theme = ExtResource("2_52tlb")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("4_i3d1g")

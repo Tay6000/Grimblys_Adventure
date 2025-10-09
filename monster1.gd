@@ -57,6 +57,3 @@ func take_damage(damage):
 
 func _on_monster_1_collision_body_entered(body: Node2D) -> void:
 	player.damage_player(dmg)
-	
-func _on_attack_body_entered(body: Node2D) -> void:
-	take_damage(player.attack)
