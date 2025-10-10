@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4e4q2mlvaixo"]
+[gd_scene load_steps=16 format=3 uid="uid://b4e4q2mlvaixo"]
 
 [ext_resource type="Script" uid="uid://bt5rkltom6d1p" path="res://shop.gd" id="1_e7rdd"]
 [ext_resource type="Texture2D" uid="uid://cwxom7sksus1c" path="res://icon.svg" id="2_blqjs"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://c13up6hthodt5" path="res://shop_buttons/razor_hat.gd" id="12_k3iel"]
 [ext_resource type="Script" uid="uid://04kseee2c4dq" path="res://shop_buttons/fan_hat.gd" id="13_2807j"]
 [ext_resource type="Theme" uid="uid://bnjai01doufgj" path="res://themes/labels.tres" id="14_u7exk"]
+[ext_resource type="Script" uid="uid://b0utaqs1omdrq" path="res://difficulty_tracker.gd" id="15_gldgk"]
 
 [node name="shop" type="CanvasLayer"]
 scale = Vector2(0.667, 0.667)
@@ -172,7 +173,6 @@ theme = ExtResource("3_blqjs")
 text = "attack upgrade"
 
 [node name="beards" type="Button" parent="."]
-visible = false
 offset_left = 251.87407
 offset_top = 491.75412
 offset_right = 587.7062
@@ -181,13 +181,43 @@ theme = ExtResource("3_blqjs")
 text = "beards"
 
 [node name="other" type="Button" parent="."]
-visible = false
 offset_left = 251.87405
 offset_top = 646.1769
 offset_right = 575.71216
 offset_bottom = 788.60565
 theme = ExtResource("3_blqjs")
 text = "other"
+
+[node name="difficulty_tracker" type="Label" parent="other"]
+layout_mode = 0
+offset_left = 505.2473
+offset_top = -263.86804
+offset_right = 833.58307
+offset_bottom = -118.86804
+theme = ExtResource("14_u7exk")
+theme_override_font_sizes/font_size = 70
+text = "Difficulty
+level:"
+horizontal_alignment = 1
+script = ExtResource("15_gldgk")
+
+[node name="minus" type="Button" parent="other/difficulty_tracker"]
+layout_mode = 0
+offset_left = 9.1552734e-05
+offset_top = 163.41827
+offset_right = 317.84128
+offset_bottom = 281.3793
+theme = ExtResource("3_blqjs")
+text = "Minus"
+
+[node name="Plus" type="Button" parent="other/difficulty_tracker"]
+layout_mode = 0
+offset_left = 1.499342
+offset_top = -173.91302
+offset_right = 319.3405
+offset_bottom = -55.951996
+theme = ExtResource("3_blqjs")
+text = "Plus"
 
 [node name="shop_text" type="Label" parent="."]
 offset_left = 787.10645
@@ -223,3 +253,5 @@ metadata/_edit_lock_ = true
 [connection signal="pressed" from="equipment" to="." method="_on_tab_pressed" binds= [NodePath("equipment")]]
 [connection signal="pressed" from="beards" to="." method="_on_tab_pressed" binds= [NodePath("beards")]]
 [connection signal="pressed" from="other" to="." method="_on_tab_pressed" binds= [NodePath("other")]]
+[connection signal="pressed" from="other/difficulty_tracker/minus" to="other/difficulty_tracker" method="_on_minus_pressed"]
+[connection signal="pressed" from="other/difficulty_tracker/Plus" to="other/difficulty_tracker" method="_on_plus_pressed"]

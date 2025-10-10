@@ -4,6 +4,7 @@ class_name Monster
 @onready var thing = $".."
 @onready var spawn1 = $"../spawner1"
 @onready var sprite = $monster1_sprite
+@onready var difficulty_tracker = $"../shop/other/difficulty_tracker"
 
 var min_health
 var max_health
@@ -15,17 +16,19 @@ var reward_gold
 var current_health
 var speed
 var level
+var difficulty
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	difficulty = difficulty_tracker.difficulty_multiplier
 	level = thing.level - 1
 	min_health = 5 + round((float(level)/5.0)*5)
 	max_health = 10 + round((float(level)/5.0)*10)
 	min_dmg = 1 + round((float(level)/5.0)*1)
 	max_dmg = 3 + round((float(level)/5.0)*3)
-	health = randi_range(min_health, max_health)
+	health = (randi_range(min_health, max_health)) * difficulty
 	current_health = health
-	dmg = randi_range(min_dmg, max_dmg)
+	dmg = (randi_range(min_dmg, max_dmg)) * difficulty
 	reward_gold = round(float(dmg + health)/5.0)
 	speed = 100
 	

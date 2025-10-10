@@ -131,9 +131,9 @@ func update_attack():
 		
 func create_new_player():
 	base_speed = 200
-	base_health = 3
-	base_defense = 0
-	base_attack = 1
+	base_health = 3000#3
+	base_defense = 3000#0
+	base_attack = 5#1
 	speed = base_speed
 	health = base_health
 	defense = base_defense
