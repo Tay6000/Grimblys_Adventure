@@ -193,6 +193,7 @@ position = Vector2(947, 810)
 scale = Vector2(4, 4)
 
 [node name="buff_scene" parent="." instance=ExtResource("10_wse8f")]
+visible = false
 
 [node name="shop" parent="." instance=ExtResource("19_cbp6q")]
 visible = false

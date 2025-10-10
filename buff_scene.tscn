@@ -15,7 +15,7 @@ script = ExtResource("1_gg64c")
 
 [node name="buff1" type="Button" parent="."]
 anchors_preset = -1
-anchor_top = 0.1729024
+anchor_top = 0.13510951
 anchor_right = 0.006377578
 anchor_bottom = 0.13510951
 offset_left = 93.878
@@ -43,6 +43,7 @@ horizontal_alignment = 1
 
 [node name="buff2" type="Button" parent="."]
 anchors_preset = -1
+anchor_top = -0.039682515
 anchor_bottom = -0.039682515
 offset_left = 501.877
 offset_top = 240.0
@@ -69,7 +70,7 @@ horizontal_alignment = 1
 
 [node name="buff3" type="Button" parent="."]
 anchors_preset = -1
-anchor_top = -0.008641964
+anchor_top = -0.025701268
 anchor_bottom = -0.025701268
 offset_left = 909.877
 offset_top = 246.22221

@@ -146,7 +146,7 @@ func create_new_player():
 	health_buffs = []
 	defense_buffs = []
 	attack_buffs = []
-	gold = 0
+	gold = 999
 	alive = false
 	
 func death():

@@ -13,9 +13,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if bought:
 		for i in get_children():
-			if !i.bought:
+			if !(i.name == "Line2D"):
+				if !i.bought:
+					i.visible = true
+			else:
 				i.visible = true
+	else:
+		for i in get_children():
+			i.visible = false
 	
 	for i in get_parent().get_children():
-		if i.bought == true && i != self:
-			disabled = true
+		if !(i.name == "Line2D"):
+			if i.bought == true && i != self:
+				disabled = true

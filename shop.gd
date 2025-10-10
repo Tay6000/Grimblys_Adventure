@@ -13,6 +13,7 @@ func _ready() -> void:
 	tabs = [$hats, $equipment, $beards, $other]
 	
 	for tab in tabs:
+		tab.visible = true
 		for x in tab.get_children():
 			x.visible = false
 

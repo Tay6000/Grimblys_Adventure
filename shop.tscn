@@ -26,6 +26,7 @@ scale = Vector2(15, 8.4375)
 texture = ExtResource("2_blqjs")
 
 [node name="hats" type="Button" parent="."]
+visible = false
 offset_left = 250.37482
 offset_top = 178.4108
 offset_right = 593.7031
@@ -35,23 +36,32 @@ text = "hats"
 
 [node name="fixed_hat" type="Button" parent="hats"]
 layout_mode = 1
-offset_left = 838.081
-offset_top = 448.27588
-offset_right = 1079.4604
-offset_bottom = 539.7301
+offset_left = 836.5817
+offset_top = 467.76614
+offset_right = 1077.9612
+offset_bottom = 559.22034
 theme = ExtResource("3_blqjs")
 text = "hat upgrade"
 script = ExtResource("4_rrolr")
 
+[node name="Line2D" type="Line2D" parent="hats/fixed_hat"]
+points = PackedVector2Array(-188.90552, -94.45288, -190.40479, -38.98059, 124.437744, -34.48285, 122.9386, -94.45288, 122.9386, -6.1035156e-05, 122.9386, -35.982056, 479.76013, -29.985107, 481.2594, -95.95209)
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+
 [node name="fortified_hat" type="Button" parent="hats/fixed_hat"]
 layout_mode = 0
 offset_left = 17.990982
-offset_top = -158.92049
+offset_top = -181.40924
 offset_right = 227.88606
-offset_bottom = -80.95943
+offset_bottom = -103.44818
 theme = ExtResource("3_blqjs")
 text = "forified hat"
 script = ExtResource("5_gldgk")
+
+[node name="Line2D" type="Line2D" parent="hats/fixed_hat/fortified_hat"]
+points = PackedVector2Array(-134.9325, -83.95813, -133.43323, -35.982117, 107.946045, -28.48587, 107.946045, -9.1552734e-05, 107.946045, -28.48587, 317.8412, -32.983612, 317.8412, -88.45587)
+default_color = Color(0, 0, 0, 1)
 
 [node name="ceramic_hat" type="Button" parent="hats/fixed_hat/fortified_hat"]
 layout_mode = 0
@@ -74,12 +84,16 @@ script = ExtResource("7_jtxfs")
 [node name="spell_hat" type="Button" parent="hats/fixed_hat"]
 layout_mode = 0
 offset_left = -281.85913
-offset_top = -160.41978
+offset_top = -182.90854
 offset_right = -71.96405
-offset_bottom = -82.458725
+offset_bottom = -104.94748
 theme = ExtResource("3_blqjs")
 text = "spell hat"
 script = ExtResource("8_tuxin")
+
+[node name="Line2D" type="Line2D" parent="hats/fixed_hat/spell_hat"]
+points = PackedVector2Array(94.45276, 2.9984436, 91.454285, -40.479828, 178.41083, -40.479828, 175.4123, -88.45584, 176.91156, -40.479828, 599.70013, -38.98056, 596.7017, -82.45883)
+default_color = Color(0, 0, 0, 1)
 
 [node name="wider_hat" type="Button" parent="hats/fixed_hat/spell_hat"]
 layout_mode = 0
@@ -102,12 +116,16 @@ script = ExtResource("10_il0eq")
 [node name="propeller_hat" type="Button" parent="hats/fixed_hat"]
 layout_mode = 0
 offset_left = 359.82007
-offset_top = -158.92053
+offset_top = -181.40929
 offset_right = 569.71515
-offset_bottom = -80.95947
+offset_bottom = -103.44823
 theme = ExtResource("3_blqjs")
 text = "propeller hat"
 script = ExtResource("11_acxsc")
+
+[node name="Line2D" type="Line2D" parent="hats/fixed_hat/propeller_hat"]
+points = PackedVector2Array(-470.7646, -88.45578, -469.26532, -40.479767, -55.472168, -38.98053, -55.472168, -83.95804, -53.973022, -38.98053, 109.44531, -38.98053, 109.44531, 0)
+default_color = Color(0, 0, 0, 1)
 
 [node name="razor_hat" type="Button" parent="hats/fixed_hat/propeller_hat"]
 layout_mode = 0
@@ -128,6 +146,7 @@ text = "fan hat"
 script = ExtResource("13_2807j")
 
 [node name="equipment" type="Button" parent="."]
+visible = false
 offset_left = 254.87256
 offset_top = 325.33734
 offset_right = 583.2084
@@ -153,6 +172,7 @@ theme = ExtResource("3_blqjs")
 text = "attack upgrade"
 
 [node name="beards" type="Button" parent="."]
+visible = false
 offset_left = 251.87407
 offset_top = 491.75412
 offset_right = 587.7062
@@ -161,6 +181,7 @@ theme = ExtResource("3_blqjs")
 text = "beards"
 
 [node name="other" type="Button" parent="."]
+visible = false
 offset_left = 251.87405
 offset_top = 646.1769
 offset_right = 575.71216
