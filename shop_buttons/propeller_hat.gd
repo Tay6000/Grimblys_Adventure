@@ -2,10 +2,14 @@ extends Button
 
 var bought
 var price
+var description
+var bought_description
 
 func _ready() -> void:
 	bought = false
 	price = 1
+	description = "What? This one?\nNot sure what ye'll do but ok...\nPrice: " + str(price)
+	bought_description = "How're you fightin with that thing? Hehe"
 	
 	for i in get_children():
 		i.visible = false

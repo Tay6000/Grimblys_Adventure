@@ -50,4 +50,8 @@ func _on_tab_pressed(button_path: NodePath):
 				x.visible = false
 
 func _on_button_hover(button_path: NodePath):
-	pass
+	var button = get_node(button_path)
+	if !button.bought:
+		shop_text.text = button.description
+	else:
+		shop_text.text = button.bought_description

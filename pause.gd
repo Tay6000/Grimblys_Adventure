@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	if player.alive == false:
 		quit_button.text = "Save and Quit"
 	else:
-		quit_button.text = "Quit"
+		quit_button.text = "Exit"
 
 
 func _on_resume_pressed() -> void:
@@ -24,11 +24,11 @@ func _on_resume_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
-	if quit_button.text == "Quit":
+	if quit_button.text == "Save and Quit":
 		get_tree().quit()
 	else:
-		get_tree().quit()
-		print("save and quit")
+		get_parent().pause_menu()
+		player.death()
 
 func _on_settings_pressed() -> void:
 	visible = false

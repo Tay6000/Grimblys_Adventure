@@ -147,7 +147,6 @@ text = "fan hat"
 script = ExtResource("13_2807j")
 
 [node name="equipment" type="Button" parent="."]
-visible = false
 offset_left = 254.87256
 offset_top = 325.33734
 offset_right = 583.2084
@@ -173,6 +172,7 @@ theme = ExtResource("3_blqjs")
 text = "attack upgrade"
 
 [node name="beards" type="Button" parent="."]
+visible = false
 offset_left = 251.87407
 offset_top = 491.75412
 offset_right = 587.7062
@@ -181,6 +181,7 @@ theme = ExtResource("3_blqjs")
 text = "beards"
 
 [node name="other" type="Button" parent="."]
+visible = false
 offset_left = 251.87405
 offset_top = 646.1769
 offset_right = 575.71216
@@ -240,15 +241,25 @@ text = "gold"
 metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="hats" to="." method="_on_tab_pressed" binds= [NodePath("hats")]]
+[connection signal="mouse_entered" from="hats/fixed_hat" to="." method="_on_button_hover" binds= [NodePath("hats/fixed_hat")]]
 [connection signal="pressed" from="hats/fixed_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat")]]
+[connection signal="mouse_entered" from="hats/fixed_hat/fortified_hat" to="." method="_on_button_hover" binds= [NodePath("hats/fixed_hat/fortified_hat")]]
 [connection signal="pressed" from="hats/fixed_hat/fortified_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/fortified_hat")]]
+[connection signal="mouse_entered" from="hats/fixed_hat/fortified_hat/ceramic_hat" to="." method="_on_button_hover" binds= [NodePath("hats/fixed_hat/fortified_hat/ceramic_hat")]]
 [connection signal="pressed" from="hats/fixed_hat/fortified_hat/ceramic_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/fortified_hat/ceramic_hat")]]
+[connection signal="mouse_entered" from="hats/fixed_hat/fortified_hat/steel_hat" to="." method="_on_button_hover" binds= [NodePath("hats/fixed_hat/fortified_hat/steel_hat")]]
 [connection signal="pressed" from="hats/fixed_hat/fortified_hat/steel_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/fortified_hat/steel_hat")]]
+[connection signal="mouse_entered" from="hats/fixed_hat/spell_hat" to="." method="_on_button_hover" binds= [NodePath("hats/fixed_hat/spell_hat")]]
 [connection signal="pressed" from="hats/fixed_hat/spell_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/spell_hat")]]
+[connection signal="mouse_entered" from="hats/fixed_hat/spell_hat/wider_hat" to="." method="_on_button_hover" binds= [NodePath("hats/fixed_hat/spell_hat/wider_hat")]]
 [connection signal="pressed" from="hats/fixed_hat/spell_hat/wider_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/spell_hat/wider_hat")]]
+[connection signal="mouse_entered" from="hats/fixed_hat/spell_hat/taller_hat" to="." method="_on_button_hover" binds= [NodePath("hats/fixed_hat/spell_hat/taller_hat")]]
 [connection signal="pressed" from="hats/fixed_hat/spell_hat/taller_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/spell_hat/taller_hat")]]
+[connection signal="mouse_entered" from="hats/fixed_hat/propeller_hat" to="." method="_on_button_hover" binds= [NodePath("hats/fixed_hat/propeller_hat")]]
 [connection signal="pressed" from="hats/fixed_hat/propeller_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/propeller_hat")]]
+[connection signal="mouse_entered" from="hats/fixed_hat/propeller_hat/razor_hat" to="." method="_on_button_hover" binds= [NodePath("hats/fixed_hat/propeller_hat/razor_hat")]]
 [connection signal="pressed" from="hats/fixed_hat/propeller_hat/razor_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/propeller_hat/razor_hat")]]
+[connection signal="mouse_entered" from="hats/fixed_hat/propeller_hat/fan_hat" to="." method="_on_button_hover" binds= [NodePath("hats/fixed_hat/propeller_hat/fan_hat")]]
 [connection signal="pressed" from="hats/fixed_hat/propeller_hat/fan_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/propeller_hat/fan_hat")]]
 [connection signal="pressed" from="equipment" to="." method="_on_tab_pressed" binds= [NodePath("equipment")]]
 [connection signal="pressed" from="beards" to="." method="_on_tab_pressed" binds= [NodePath("beards")]]
