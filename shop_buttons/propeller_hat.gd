@@ -4,12 +4,16 @@ var bought
 var price
 var description
 var bought_description
+var upgrades = []
+var upgrade = []
 
 func _ready() -> void:
 	bought = false
 	price = 1
 	description = "What? This one?\nNot sure what ye'll do but ok...\nPrice: " + str(price)
 	bought_description = "How're you fightin with that thing? Hehe"
+	upgrade = ["stat", 4, 50]
+	upgrades = [upgrade]
 	
 	for i in get_children():
 		i.visible = false

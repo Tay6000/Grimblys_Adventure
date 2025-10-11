@@ -25,12 +25,19 @@ func _process(delta: float) -> void:
 			rotation = -1.5708
 		
 		$attack_sprite.visible = true
-		$attack_collision.set_deferred("disabled", false)
-		await get_tree().create_timer(0.2).timeout
-		$attack_sprite.visible = false
-		$attack_collision.set_deferred("disabled", true)
+		$attack_sprite.play("slash")
+	
+	if $attack_sprite.frame > 2 && $attack_sprite.frame < 8:
+		$attack_collision.disabled = false
+	else:
+		$attack_collision.disabled = true
 
 
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.get_parent() is Monster:
 		area.get_parent().take_damage(player.attack)
+
+
+func _on_attack_sprite_animation_finished() -> void:
+	$attack_sprite.stop()
+	$attack_sprite.visible = false

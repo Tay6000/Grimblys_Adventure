@@ -56,7 +56,7 @@ func do_buffs(button : Node, label : Node):
 		button.buff = buff
 		button.multiplier = buff_multiplier
 	elif buff == 4:
-		button.text = "cursed"
+		button.icon = null
 		label.text = "cursed x" + str(buff_multiplier)
 		button.buff = buff
 		button.multiplier = buff_multiplier

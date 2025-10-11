@@ -92,48 +92,40 @@ func _process(delta) -> void:
 func update_speed() -> void:
 	speed = base_speed
 	for i in speed_upgrades:
-		var upgrade = speed_upgrades[i]
-		speed = speed + upgrade
+		speed = speed + i
 	for i in speed_buffs:
-		var buff = speed_buffs[i]
-		var speed_add = round(speed * buff)
+		var speed_add = round(speed * i)
 		speed = speed + speed_add
 		
 func update_health() -> void:
 	health = base_health
 	for i in health_upgrades:
-		var upgrade = health_upgrades[i]
-		health = health + upgrade
+		health = health + i
 	for i in health_buffs:
-		var buff = health_buffs[i]
-		var health_add = round(health * buff)
+		var health_add = round(health * i)
 		health = health + health_add
 		
 func update_defense() -> void:
 	defense = base_defense
 	for i in defense_upgrades:
-		var upgrade = defense_upgrades[i]
-		defense = defense + upgrade
+		defense = defense + i
 	for i in defense_buffs:
-		var buff = defense_buffs[i]
-		var defense_add = round(defense * buff)
+		var defense_add = round(defense * i)
 		defense = defense + defense_add
 		
 func update_attack():
 	attack = base_attack
 	for i in attack_upgrades:
-		var upgrade = attack_upgrades[i]
-		attack += upgrade
+		attack += i
 	for i in attack_buffs:
-		var buff = attack_buffs[i]
-		var attack_add = round(attack * buff)
+		var attack_add = round(attack * i)
 		attack = attack + attack_add
 		
 func create_new_player():
 	base_speed = 200
-	base_health = 3000#3
-	base_defense = 3000#0
-	base_attack = 5#1
+	base_health = 3
+	base_defense = 0
+	base_attack = 1
 	speed = base_speed
 	health = base_health
 	defense = base_defense

@@ -42,7 +42,7 @@ offset_top = 467.76614
 offset_right = 1077.9612
 offset_bottom = 559.22034
 theme = ExtResource("3_blqjs")
-text = "hat upgrade"
+text = "fixed hat"
 script = ExtResource("4_rrolr")
 
 [node name="Line2D" type="Line2D" parent="hats/fixed_hat"]
@@ -79,7 +79,7 @@ offset_left = 215.89206
 offset_top = -163.41833
 offset_right = 394.30283
 offset_bottom = -92.953766
-text = "steel_hat"
+text = "steel hat"
 script = ExtResource("7_jtxfs")
 
 [node name="spell_hat" type="Button" parent="hats/fixed_hat"]

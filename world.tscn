@@ -285,6 +285,15 @@ offset_bottom = 539.0
 scale = Vector2(1.5, 1.5)
 size_flags_horizontal = 4
 
+[node name="test" type="Label" parent="."]
+offset_left = 58.470757
+offset_top = 259.3703
+offset_right = 329.83508
+offset_bottom = 362.2354
+theme = ExtResource("11_2u3nc")
+theme_override_font_sizes/font_size = 48
+text = "test"
+
 [connection signal="area_shape_entered" from="portal" to="player" method="_on_portal_area_shape_entered"]
 [connection signal="body_entered" from="portal" to="player" method="_on_portal_body_entered"]
 [connection signal="body_entered" from="eddy" to="player" method="_on_eddy_body_entered"]
