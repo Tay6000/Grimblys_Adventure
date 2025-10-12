@@ -1,9 +1,11 @@
-[gd_scene load_steps=39 format=3 uid="uid://dgd20gmn6koc2"]
+[gd_scene load_steps=42 format=3 uid="uid://dgd20gmn6koc2"]
 
 [ext_resource type="Script" uid="uid://bev7bdwt4q82m" path="res://player.gd" id="1_hqtel"]
 [ext_resource type="Texture2D" uid="uid://bu0epb52ltkmo" path="res://Sprites/Grimbly_sprites.png" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://cewer8fgpscpi" path="res://attack.gd" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://bxrowwjjp1caw" path="res://Sprites/slash.png" id="4_hqtel"]
+[ext_resource type="Texture2D" uid="uid://cwxom7sksus1c" path="res://icon.svg" id="4_sweqy"]
+[ext_resource type="Script" uid="uid://b2tbo35tht5gr" path="res://razor_hat.gd" id="5_2hs0m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
 atlas = ExtResource("2_onrkg")
@@ -299,6 +301,9 @@ animations = [{
 radius = 11.600003
 height = 48.800007
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jxqw"]
+size = Vector2(25.6, 21.799995)
+
 [node name="player" type="CharacterBody2D"]
 scale = Vector2(5, 5)
 script = ExtResource("1_hqtel")
@@ -337,5 +342,19 @@ scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("CapsuleShape2D_hqtel")
 disabled = true
 
+[node name="razor_hat" type="Area2D" parent="."]
+script = ExtResource("5_2hs0m")
+
+[node name="razor_sprite" type="Sprite2D" parent="razor_hat"]
+position = Vector2(0.19999981, -35.2)
+scale = Vector2(0.21132815, 0.18437496)
+texture = ExtResource("4_sweqy")
+
+[node name="razor_collision" type="CollisionShape2D" parent="razor_hat"]
+position = Vector2(0.20000114, -35.499996)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_1jxqw")
+
 [connection signal="area_shape_entered" from="attack" to="attack" method="_on_area_shape_entered"]
 [connection signal="animation_finished" from="attack/attack_sprite" to="attack" method="_on_attack_sprite_animation_finished"]
+[connection signal="area_shape_entered" from="razor_hat" to="razor_hat" method="_on_area_shape_entered"]

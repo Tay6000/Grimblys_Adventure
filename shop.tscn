@@ -33,7 +33,7 @@ offset_top = 178.4108
 offset_right = 593.7031
 offset_bottom = 298.35083
 theme = ExtResource("3_blqjs")
-text = "hats"
+text = "Hats"
 
 [node name="fixed_hat" type="Button" parent="hats"]
 layout_mode = 1
@@ -42,7 +42,7 @@ offset_top = 467.76614
 offset_right = 1077.9612
 offset_bottom = 559.22034
 theme = ExtResource("3_blqjs")
-text = "fixed hat"
+text = "Fixed hat"
 script = ExtResource("4_rrolr")
 
 [node name="Line2D" type="Line2D" parent="hats/fixed_hat"]
@@ -57,7 +57,7 @@ offset_top = -181.40924
 offset_right = 227.88606
 offset_bottom = -103.44818
 theme = ExtResource("3_blqjs")
-text = "forified hat"
+text = "Forified hat"
 script = ExtResource("5_gldgk")
 
 [node name="Line2D" type="Line2D" parent="hats/fixed_hat/fortified_hat"]
@@ -70,7 +70,7 @@ offset_left = -217.3913
 offset_top = -163.41838
 offset_right = -38.98053
 offset_bottom = -92.95381
-text = "ceramic hat"
+text = "Ceramic hat"
 script = ExtResource("6_763b7")
 
 [node name="steel_hat" type="Button" parent="hats/fixed_hat/fortified_hat"]
@@ -79,7 +79,7 @@ offset_left = 215.89206
 offset_top = -163.41833
 offset_right = 394.30283
 offset_bottom = -92.953766
-text = "steel hat"
+text = "Steel hat"
 script = ExtResource("7_jtxfs")
 
 [node name="spell_hat" type="Button" parent="hats/fixed_hat"]
@@ -89,7 +89,7 @@ offset_top = -182.90854
 offset_right = -71.96405
 offset_bottom = -104.94748
 theme = ExtResource("3_blqjs")
-text = "spell hat"
+text = "Spell hat"
 script = ExtResource("8_tuxin")
 
 [node name="Line2D" type="Line2D" parent="hats/fixed_hat/spell_hat"]
@@ -102,7 +102,7 @@ offset_left = 79.46032
 offset_top = -164.91754
 offset_right = 272.86365
 offset_bottom = -95.951965
-text = "wider hat"
+text = "Wider hat"
 script = ExtResource("9_8lh4o")
 
 [node name="taller_hat" type="Button" parent="hats/fixed_hat/spell_hat"]
@@ -111,7 +111,7 @@ offset_left = 491.75412
 offset_top = -161.91905
 offset_right = 691.15454
 offset_bottom = -92.95351
-text = "taller hat"
+text = "Taller hat"
 script = ExtResource("10_il0eq")
 
 [node name="propeller_hat" type="Button" parent="hats/fixed_hat"]
@@ -121,7 +121,7 @@ offset_top = -181.40929
 offset_right = 569.71515
 offset_bottom = -103.44823
 theme = ExtResource("3_blqjs")
-text = "propeller hat"
+text = "Propeller hat"
 script = ExtResource("11_acxsc")
 
 [node name="Line2D" type="Line2D" parent="hats/fixed_hat/propeller_hat"]
@@ -134,7 +134,7 @@ offset_left = -152.92355
 offset_top = -166.41684
 offset_right = 43.478302
 offset_bottom = -94.45279
-text = "razor hat"
+text = "Razor hat"
 script = ExtResource("12_k3iel")
 
 [node name="fan_hat" type="Button" parent="hats/fixed_hat/propeller_hat"]
@@ -143,7 +143,7 @@ offset_left = -566.7167
 offset_top = -170.91458
 offset_right = -370.31482
 offset_bottom = -98.95053
-text = "fan hat"
+text = "Fan hat"
 script = ExtResource("13_2807j")
 
 [node name="equipment" type="Button" parent="."]
@@ -152,7 +152,7 @@ offset_top = 325.33734
 offset_right = 583.2084
 offset_bottom = 461.76913
 theme = ExtResource("3_blqjs")
-text = "shoes"
+text = "Equipment"
 
 [node name="shoe_upgrade" type="Button" parent="equipment"]
 layout_mode = 0

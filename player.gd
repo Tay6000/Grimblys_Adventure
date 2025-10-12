@@ -34,6 +34,8 @@ var gold
 var reward_gold
 var screen_size
 var alive
+var powers
+var abilities
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -140,6 +142,8 @@ func create_new_player():
 	attack_buffs = []
 	gold = 999
 	alive = false
+	powers = []
+	abilities = []
 	
 func death():
 	fade_to_black.fade_out()

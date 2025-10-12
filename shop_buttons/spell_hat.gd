@@ -9,8 +9,8 @@ var upgrade = []
 
 func _ready() -> void:
 	bought = false
-	price = 1
-	description = "This hat'll keep ye safe.\nIt's got some power to it.\nPrice: " + str(price)
+	price = 25
+	description = "This hat'll keep ye safe.\nIt's got some power to it.\nPrice: " + str(price) + "\nSummons a fireball"
 	bought_description = "Burn em up for me, will ye?"
 	upgrade = ["power", "fireballs"]
 	upgrades = [upgrade]

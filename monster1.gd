@@ -17,6 +17,7 @@ var current_health
 var speed
 var level
 var difficulty
+var taking_damage
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,6 +32,7 @@ func _ready() -> void:
 	dmg = (randi_range(min_dmg, max_dmg)) * difficulty
 	reward_gold = round(float(dmg + health)/5.0)
 	speed = 100
+	taking_damage = false
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,11 +45,12 @@ func _process(delta: float) -> void:
 	
 	$monster_health.text = str(int(current_health))
 	
-	velocity = position.direction_to(player.position) * speed
-	if velocity.x < 0:
-		$monster1_sprite.scale.x = 0.2
-	else:
-		$monster1_sprite.scale.x = -0.2
+	if !taking_damage:
+		velocity = position.direction_to(player.position) * speed
+		if velocity.x < 0:
+			$monster1_sprite.scale.x = 0.2
+		else:
+			$monster1_sprite.scale.x = -0.2
 	move_and_slide()
 	
 func death():
@@ -56,7 +59,15 @@ func death():
 	player.reward_gold += reward_gold
 	
 func take_damage(damage):
-	current_health = round(current_health - damage)
+	current_health = current_health - damage
+	$monster1_sprite.modulate = Color(0, 0, 0, 1)
+	taking_damage = true
+	await get_tree().create_timer(0.05).timeout
+	velocity = -(position.direction_to(player.position) * 300)
+	$monster1_sprite.modulate = Color(1, 1, 1, 1)
+	await get_tree().create_timer(0.05).timeout
+	move_and_slide()
+	taking_damage = false
 
 func _on_monster_1_collision_body_entered(body: Node2D) -> void:
 	player.damage_player(dmg)

@@ -43,7 +43,8 @@ func _process(delta: float) -> void:
 		$player_health.visible = true
 		$player_gold.visible = false
 	
-	$test.text = "def: " + str($player.defense) + " hp: " + str($player.health) + " spd: " + str($player.speed) + " atk: " + str($player.attack)
+	$test.text = "def: " + str(int($player.defense)) + " max hp: " + str(int($player.health)) + \
+					" spd: " + str(int($player.speed)) + " atk: " + str(int($player.attack))
 
 func do_spawning():
 	enemies = level*2

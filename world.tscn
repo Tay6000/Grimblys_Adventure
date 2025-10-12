@@ -286,10 +286,10 @@ scale = Vector2(1.5, 1.5)
 size_flags_horizontal = 4
 
 [node name="test" type="Label" parent="."]
-offset_left = 58.470757
-offset_top = 259.3703
-offset_right = 329.83508
-offset_bottom = 362.2354
+offset_left = 17.991001
+offset_top = 154.42279
+offset_right = 289.35532
+offset_bottom = 257.2879
 theme = ExtResource("11_2u3nc")
 theme_override_font_sizes/font_size = 48
 text = "test"

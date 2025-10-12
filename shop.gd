@@ -47,7 +47,7 @@ func _on_upgrade_pressed(button_path: NodePath):
 				if i[0] == "stat":
 					add_upgrade(i)
 				elif i[0] == "power":
-					pass
+					add_power(i)
 				elif i[0] == "ability":
 					pass
 				else:
@@ -81,3 +81,9 @@ func add_upgrade(upgrade : Array):
 		player.attack_upgrades.append(upgrade[2])
 	elif upgrade[1] == 4:
 		player.speed_upgrades.append(upgrade[2])
+
+func add_power(power : Array):
+	player.powers.append(power[1])
+
+func add_ability(ability : Array):
+	player.abilities.append(ability[1])
