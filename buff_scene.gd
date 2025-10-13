@@ -18,7 +18,7 @@ var buff
 var buff_multiplier = 0.00
 
 #buffs numbers: ["defense", "health", "attack", "speed", "cursed"]
-#cursed stats numbers: ["defense", "health", "speed"]
+var cursed = ["defense", "health", "speed"]
 
 func _ready() -> void:
 	activate_buttons()
@@ -57,7 +57,12 @@ func do_buffs(button : Node, label : Node):
 		button.multiplier = buff_multiplier
 	elif buff == 4:
 		button.icon = null
-		label.text = "cursed x" + str(buff_multiplier)
+		button.sacrifice = randi_range(1, 3)
+		button.add = randi_range(1, 3)
+		while button.add == button.sacrifice:
+			button.add = randi_range(1, 3)
+		label.text = "cursed: sacrifice \n" + cursed[button.sacrifice - 1] + " -" + \
+				str(buff_multiplier) + "\n for " + cursed[button.add - 1] + " +" + str(buff_multiplier)
 		button.buff = buff
 		button.multiplier = buff_multiplier
 	
@@ -89,5 +94,17 @@ func _on_button_pressed(button_path : NodePath):
 	elif button.buff == 3:
 		player.speed_buffs.append(button.multiplier)
 	elif button.buff == 4:
-		print("cursed")
+		if button.sacrifice == 1:
+			player.defense_buffs.append(-button.multiplier)
+		elif button.sacrifice == 2:
+			player.health_buffs.append(-button.multiplier)
+		elif button.sacrifice == 3:
+			player.speed_buffs.append(-button.multiplier)
+		
+		if button.add == 1:
+			player.defense_buffs.append(button.multiplier)
+		elif button.add == 2:
+			player.health_buffs.append(button.multiplier)
+		elif button.add == 3:
+			player.health_buffs.append(button.multiplier)
 	deactivate_buttons()
