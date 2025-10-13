@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://djiatoem1dirv" path="res://Sprites/portal2.png" id="8_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://cw35ycke5hrph" path="res://buff_scene.tscn" id="10_wse8f"]
 [ext_resource type="Theme" uid="uid://bnjai01doufgj" path="res://themes/labels.tres" id="11_2u3nc"]
-[ext_resource type="AudioStream" uid="uid://bx1eg1bncu4hv" path="res://Music/Grimblys stay - 2025-09-28, 8.00 AM.mp3" id="12_k3n1d"]
+[ext_resource type="AudioStream" uid="uid://v3afe2btmdy7" path="res://Music/GrimblyEnter.mp3" id="17_bc84e"]
 [ext_resource type="Script" uid="uid://c30sety1nyjtg" path="res://eddy.gd" id="17_ikiii"]
 [ext_resource type="Texture2D" uid="uid://cmt6o6xm2layv" path="res://Sprites/eddy.png" id="17_udxuc"]
 [ext_resource type="AudioStream" uid="uid://c31u3ukgi81ro" path="res://Music/GrimblyShovelMix.mp3" id="18_bc84e"]
@@ -258,7 +258,7 @@ position = Vector2(1573, 882)
 metadata/_edit_lock_ = true
 
 [node name="lobby_music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_k3n1d")
+stream = ExtResource("17_bc84e")
 
 [node name="level_music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("18_bc84e")
