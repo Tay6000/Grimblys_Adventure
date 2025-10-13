@@ -30,6 +30,7 @@ func _process(delta: float) -> void:
 		player.update_attack()
 		player.position.x = 947
 		player.position.y = 810
+		player.alive == false
 		await get_tree().create_timer(2).timeout
 		shop_music.stop()
 		root_node.enable_things()

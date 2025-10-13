@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 	if current_health == 0 or current_health < 0:
 		death()
 	if player.alive == false:
-		death()
+		queue_free()
 	
 	$monster_health.text = str(int(current_health))
 	
@@ -56,7 +56,7 @@ func _process(delta: float) -> void:
 func death():
 	queue_free()
 	get_parent().current_enemies -= 1
-	player.reward_gold += reward_gold
+	player.gold += reward_gold
 	
 func take_damage(damage, aspect):
 	current_health = current_health - damage

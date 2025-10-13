@@ -234,6 +234,7 @@ text = "Burn"
 script = ExtResource("19_8f8xc")
 
 [node name="beards" type="Button" parent="."]
+visible = false
 offset_left = 251.87407
 offset_top = 491.75412
 offset_right = 587.7062

@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 	if bought:
 		bought = false
 		amount_bought += 1
-		price = 10 * (amount_bought + 2)
+		price = 10 * (amount_bought + 1.5)
 	
 	if amount_bought > 0:
 		for i in get_children():

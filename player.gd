@@ -32,7 +32,6 @@ var defense_buffs
 var attack_buffs
 var current_health
 var gold
-var reward_gold
 var screen_size
 var alive
 var powers
@@ -47,7 +46,6 @@ func _ready() -> void:
 	update_health()
 	update_speed()
 	current_health = health
-	reward_gold = 0
 	lobby_music.play()
 	$fireball_indicator.visible = false
 	dashing = false
@@ -162,19 +160,20 @@ func create_new_player():
 func death():
 	fade_to_black.fade_out()
 	fade_to_black.color_rect.visible = true
+	alive = false
+	position.x = 947
+	position.y = 810
 	root_node.current_enemies = 3000
 	root_node.level = 0
-	gold = gold + reward_gold
-	reward_gold = 0
 	speed_buffs = []
 	defense_buffs = []
 	health_buffs = []
+	attack_buffs = []
 	update_defense()
 	update_health()
 	update_speed()
 	update_attack()
 	current_health = health
-	alive = false
 	await get_tree().create_timer(2).timeout
 	root_node.current_enemies = 0
 	cave.play("cave_lobby")
@@ -197,6 +196,8 @@ func damage_player(damage) -> void:
 func _on_portal_body_entered(body: Node2D) -> void:
 	fade_to_black.fade_out()
 	fade_to_black.color_rect.visible = true
+	position.x = 947
+	position.y = 810
 	root_node.current_enemies = 30000
 	update_defense()
 	update_health()
