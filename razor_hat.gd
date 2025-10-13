@@ -23,10 +23,10 @@ func _process(delta: float) -> void:
 		$razor_sprite.visible = false
 		$razor_collision.disabled = true
 	
-	rotate(0.1)
-	$razor_sprite.rotate(0.1)
-	$razor_collision.rotate(0.1)
+	rotate(0.02)
+	$razor_sprite.rotate(0.2)
+	$razor_collision.rotate(0.2)
 
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.get_parent() is Monster:
-		area.get_parent().take_damage(float(player.attack) / 4.0)
+		area.get_parent().take_damage((float(player.attack) / 4.0), "null")

@@ -9,6 +9,7 @@ extends Node2D
 @onready var settings = $settings
 
 @export var monster1: PackedScene
+@export var fireball : PackedScene
 
 var paused = false
 var enemies = 0
@@ -104,3 +105,24 @@ func pause_menu():
 		pause.show()
 		Engine.time_scale = 0
 		paused = true
+
+func do_fireballs():
+	if $player.powers.has("fireballs"):
+		while current_enemies > 0:
+			var time
+			var instance = fireball.instantiate()
+			instance.position = $player.position
+			
+			if $player.powers.has("bigger fireball"):
+				instance.scale.x = 2
+				instance.scale.y = 2
+				time = 6
+			elif $player.powers.has("more fireballs"):
+				instance.scale.x = 0.5
+				instance.scale.y = 0.5
+				time = 1
+			else:
+				time = 4
+			
+			add_child(instance)
+			await get_tree().create_timer(time).timeout

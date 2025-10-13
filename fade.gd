@@ -6,7 +6,6 @@ extends CanvasLayer
 func _ready():
 	visible = false
 	color_rect.visible = false
-	animation_player.animation_finished.connect(_invisible)
 	$ColorRect.mouse_filter = 2
 	
 func _invisible():

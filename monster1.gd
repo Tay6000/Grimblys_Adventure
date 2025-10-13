@@ -58,16 +58,18 @@ func death():
 	get_parent().current_enemies -= 1
 	player.reward_gold += reward_gold
 	
-func take_damage(damage):
+func take_damage(damage, aspect):
 	current_health = current_health - damage
 	$monster1_sprite.modulate = Color(0, 0, 0, 1)
 	taking_damage = true
+	$monster1_collision/CollisionShape2D.disabled = true
 	await get_tree().create_timer(0.05).timeout
 	velocity = -(position.direction_to(player.position) * 300)
 	$monster1_sprite.modulate = Color(1, 1, 1, 1)
 	await get_tree().create_timer(0.05).timeout
 	move_and_slide()
 	taking_damage = false
+	$monster1_collision/CollisionShape2D.disabled = false
 
 func _on_monster_1_collision_body_entered(body: Node2D) -> void:
 	player.damage_player(dmg)

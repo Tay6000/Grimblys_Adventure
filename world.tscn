@@ -1,9 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://d0cobauyu36dg"]
+[gd_scene load_steps=34 format=3 uid="uid://d0cobauyu36dg"]
 
 [ext_resource type="Script" uid="uid://tilijiokuxa" path="res://world.gd" id="1_dwbse"]
 [ext_resource type="PackedScene" uid="uid://dgd20gmn6koc2" path="res://player.tscn" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://boxhtkxbu0efr" path="res://Sprites/cave_level.jpeg" id="1_tlwt5"]
 [ext_resource type="Script" uid="uid://c7yj4nue6vcbk" path="res://cave.gd" id="2_036b0"]
+[ext_resource type="PackedScene" uid="uid://dqppcn4hlofaq" path="res://fireball.tscn" id="3_26xuy"]
 [ext_resource type="Texture2D" uid="uid://dck1jj8yx2xoo" path="res://Sprites/cave_lobby.jpeg" id="3_ioo17"]
 [ext_resource type="Script" uid="uid://cppsusabp7giq" path="res://portal.gd" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cbm3x1q3ejb5g" path="res://Monster.tscn" id="6_gbfbk"]
@@ -12,11 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://djiatoem1dirv" path="res://Sprites/portal2.png" id="8_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://cw35ycke5hrph" path="res://buff_scene.tscn" id="10_wse8f"]
 [ext_resource type="Theme" uid="uid://bnjai01doufgj" path="res://themes/labels.tres" id="11_2u3nc"]
-[ext_resource type="AudioStream" uid="uid://cu2aip3tj7vjh" path="res://Music/Grimblys fight - 2025-09-28, 7.38 AM.mp3" id="11_ic0uy"]
 [ext_resource type="AudioStream" uid="uid://bx1eg1bncu4hv" path="res://Music/Grimblys stay - 2025-09-28, 8.00 AM.mp3" id="12_k3n1d"]
 [ext_resource type="Script" uid="uid://c30sety1nyjtg" path="res://eddy.gd" id="17_ikiii"]
 [ext_resource type="Texture2D" uid="uid://cmt6o6xm2layv" path="res://Sprites/eddy.png" id="17_udxuc"]
+[ext_resource type="AudioStream" uid="uid://c31u3ukgi81ro" path="res://Music/GrimblyShovelMix.mp3" id="18_bc84e"]
 [ext_resource type="PackedScene" uid="uid://b4e4q2mlvaixo" path="res://shop.tscn" id="19_cbp6q"]
+[ext_resource type="AudioStream" uid="uid://1vcc748y17tw" path="res://Music/RadShop.mp3" id="19_wukud"]
 [ext_resource type="PackedScene" uid="uid://cf3s2tjcbdu4x" path="res://pause.tscn" id="20_26xuy"]
 [ext_resource type="PackedScene" uid="uid://uvx8vv1uji68" path="res://settings.tscn" id="21_bc84e"]
 
@@ -127,6 +129,7 @@ _data = {
 scale = Vector2(0.667, 0.667)
 script = ExtResource("1_dwbse")
 monster1 = ExtResource("6_gbfbk")
+fireball = ExtResource("3_26xuy")
 
 [node name="cave" type="AnimatedSprite2D" parent="."]
 position = Vector2(960, 539.75)
@@ -258,7 +261,10 @@ metadata/_edit_lock_ = true
 stream = ExtResource("12_k3n1d")
 
 [node name="level_music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_ic0uy")
+stream = ExtResource("18_bc84e")
+
+[node name="shop_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_wukud")
 
 [node name="pause" parent="." instance=ExtResource("20_26xuy")]
 visible = false
@@ -297,5 +303,6 @@ text = "test"
 [connection signal="area_shape_entered" from="portal" to="player" method="_on_portal_area_shape_entered"]
 [connection signal="body_entered" from="portal" to="player" method="_on_portal_body_entered"]
 [connection signal="body_entered" from="eddy" to="player" method="_on_eddy_body_entered"]
+[connection signal="animation_finished" from="fade/AnimationPlayer" to="fade" method="_invisible"]
 [connection signal="finished" from="lobby_music" to="player" method="_on_lobby_music_finished"]
 [connection signal="finished" from="level_music" to="player" method="_on_level_music_finished"]

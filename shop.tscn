@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b4e4q2mlvaixo"]
+[gd_scene load_steps=25 format=3 uid="uid://b4e4q2mlvaixo"]
 
 [ext_resource type="Script" uid="uid://bt5rkltom6d1p" path="res://shop.gd" id="1_e7rdd"]
 [ext_resource type="Texture2D" uid="uid://cwxom7sksus1c" path="res://icon.svg" id="2_blqjs"]
@@ -13,8 +13,17 @@
 [ext_resource type="Script" uid="uid://b5u3mj5drvvma" path="res://shop_buttons/propeller_hat.gd" id="11_acxsc"]
 [ext_resource type="Script" uid="uid://c13up6hthodt5" path="res://shop_buttons/razor_hat.gd" id="12_k3iel"]
 [ext_resource type="Script" uid="uid://04kseee2c4dq" path="res://shop_buttons/fan_hat.gd" id="13_2807j"]
+[ext_resource type="Script" uid="uid://c6fyd0u34wuy5" path="res://shop_buttons/shoe_upgrade.gd" id="14_acxsc"]
 [ext_resource type="Theme" uid="uid://bnjai01doufgj" path="res://themes/labels.tres" id="14_u7exk"]
 [ext_resource type="Script" uid="uid://b0utaqs1omdrq" path="res://difficulty_tracker.gd" id="15_gldgk"]
+[ext_resource type="Script" uid="uid://kpft2otxf4j3" path="res://shop_buttons/dash.gd" id="15_k3iel"]
+[ext_resource type="Script" uid="uid://cl2ukuvp2kqal" path="res://shop_buttons/attack_upgrade.gd" id="16_2807j"]
+[ext_resource type="Script" uid="uid://dphy5g3y5ven6" path="res://shop_buttons/freeze.gd" id="17_u7exk"]
+[ext_resource type="Script" uid="uid://dewvsu3wt42en" path="res://shop_buttons/shock.gd" id="18_db3q1"]
+[ext_resource type="Script" uid="uid://ds03h7jrg3xgj" path="res://shop_buttons/burn.gd" id="19_8f8xc"]
+[ext_resource type="Script" uid="uid://bicmvh6wfki7l" path="res://shop_buttons/bushy_beard.gd" id="20_u7exk"]
+[ext_resource type="Script" uid="uid://bc1cql4fdf8l1" path="res://shop_buttons/long_beard.gd" id="21_db3q1"]
+[ext_resource type="Script" uid="uid://ci2gnkggxrwdm" path="res://shop_buttons/health_upgrade.gd" id="22_k3iel"]
 
 [node name="shop" type="CanvasLayer"]
 scale = Vector2(0.667, 0.667)
@@ -25,6 +34,11 @@ script = ExtResource("1_e7rdd")
 position = Vector2(960, 540)
 scale = Vector2(15, 8.4375)
 texture = ExtResource("2_blqjs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1938.5308
+offset_bottom = 1100.4498
+color = Color(0.20871013, 0.20871016, 0.20871013, 1)
 
 [node name="hats" type="Button" parent="."]
 visible = false
@@ -147,6 +161,7 @@ text = "Fan hat"
 script = ExtResource("13_2807j")
 
 [node name="equipment" type="Button" parent="."]
+visible = false
 offset_left = 254.87256
 offset_top = 325.33734
 offset_right = 583.2084
@@ -160,25 +175,89 @@ offset_left = 578.7107
 offset_top = 277.36136
 offset_right = 827.58624
 offset_bottom = 388.30588
-text = "shoe upgrade"
+text = "Shoe upgrade"
+script = ExtResource("14_acxsc")
+
+[node name="Line2D" type="Line2D" parent="equipment/shoe_upgrade"]
+points = PackedVector2Array(250.37476, 55.47223, 472.26392, 55.47223)
+default_color = Color(0, 0, 0, 1)
+
+[node name="dash" type="Button" parent="equipment/shoe_upgrade"]
+layout_mode = 0
+offset_left = 469.26538
+offset_top = 5.9969177
+offset_right = 724.13794
+offset_bottom = 103.44821
+text = "Dash"
+script = ExtResource("15_k3iel")
 
 [node name="attack_upgrade" type="Button" parent="equipment"]
 layout_mode = 0
-offset_left = 1080.9596
-offset_top = 287.8561
-offset_right = 1353.8232
-offset_bottom = 379.3104
+offset_left = 584.70764
+offset_top = -85.45725
+offset_right = 857.5713
+offset_bottom = 5.997032
 theme = ExtResource("3_blqjs")
-text = "attack upgrade"
+text = "Attack upgrade"
+script = ExtResource("16_2807j")
+
+[node name="Line2D" type="Line2D" parent="equipment/attack_upgrade"]
+position = Vector2(278.86084, 170.91452)
+points = PackedVector2Array(223.38818, 59.97, 67.46619, 61.46927, 64.46777, -118.44083, 218.89038, -124.437775, 65.96704, -121.43933, 61.468994, -298.35083, 209.8949, -304.34784, 61.468994, -299.8501, 64.46777, -122.93858, -4.497925, -124.437775)
+default_color = Color(0, 0, 0, 1)
+
+[node name="freeze" type="Button" parent="equipment/attack_upgrade"]
+layout_mode = 0
+offset_left = 482.7587
+offset_top = -182.90857
+offset_right = 713.6432
+offset_bottom = -86.95656
+text = "Freeze"
+script = ExtResource("17_u7exk")
+
+[node name="shock" type="Button" parent="equipment/attack_upgrade"]
+layout_mode = 0
+offset_left = 481.25937
+offset_top = -1.4992962
+offset_right = 707.64624
+offset_bottom = 92.953445
+text = "Shock"
+script = ExtResource("18_db3q1")
+
+[node name="burn" type="Button" parent="equipment/attack_upgrade"]
+layout_mode = 0
+offset_left = 487.2564
+offset_top = 176.91151
+offset_right = 707.64624
+offset_bottom = 269.865
+text = "Burn"
+script = ExtResource("19_8f8xc")
 
 [node name="beards" type="Button" parent="."]
-visible = false
 offset_left = 251.87407
 offset_top = 491.75412
 offset_right = 587.7062
 offset_bottom = 622.18896
 theme = ExtResource("3_blqjs")
-text = "beards"
+text = "Beards"
+
+[node name="bushy_beard" type="Button" parent="beards"]
+layout_mode = 0
+offset_left = 1094.4529
+offset_top = -20.989506
+offset_right = 1458.7708
+offset_bottom = 107.946045
+text = "Bushy tonic"
+script = ExtResource("20_u7exk")
+
+[node name="long_beard" type="Button" parent="beards"]
+layout_mode = 0
+offset_left = 530.7346
+offset_top = -28.485756
+offset_right = 892.054
+offset_bottom = 106.4468
+text = "Lengthening tonic"
+script = ExtResource("21_db3q1")
 
 [node name="other" type="Button" parent="."]
 visible = false
@@ -187,7 +266,7 @@ offset_top = 646.1769
 offset_right = 575.71216
 offset_bottom = 788.60565
 theme = ExtResource("3_blqjs")
-text = "other"
+text = "Other"
 
 [node name="difficulty_tracker" type="Label" parent="other"]
 layout_mode = 0
@@ -219,6 +298,15 @@ offset_right = 319.3405
 offset_bottom = -55.951996
 theme = ExtResource("3_blqjs")
 text = "Plus"
+
+[node name="health_upgrade" type="Button" parent="other"]
+layout_mode = 0
+offset_left = 1082.4587
+offset_top = -235.38231
+offset_right = 1313.3434
+offset_bottom = -130.4348
+text = "Health+"
+script = ExtResource("22_k3iel")
 
 [node name="shop_text" type="Label" parent="."]
 offset_left = 787.10645
@@ -262,7 +350,25 @@ metadata/_edit_lock_ = true
 [connection signal="mouse_entered" from="hats/fixed_hat/propeller_hat/fan_hat" to="." method="_on_button_hover" binds= [NodePath("hats/fixed_hat/propeller_hat/fan_hat")]]
 [connection signal="pressed" from="hats/fixed_hat/propeller_hat/fan_hat" to="." method="_on_upgrade_pressed" binds= [NodePath("hats/fixed_hat/propeller_hat/fan_hat")]]
 [connection signal="pressed" from="equipment" to="." method="_on_tab_pressed" binds= [NodePath("equipment")]]
+[connection signal="mouse_entered" from="equipment/shoe_upgrade" to="." method="_on_button_hover" binds= [NodePath("equipment/shoe_upgrade")]]
+[connection signal="pressed" from="equipment/shoe_upgrade" to="." method="_on_upgrade_pressed" binds= [NodePath("equipment/shoe_upgrade")]]
+[connection signal="mouse_entered" from="equipment/shoe_upgrade/dash" to="." method="_on_button_hover" binds= [NodePath("equipment/shoe_upgrade/dash")]]
+[connection signal="pressed" from="equipment/shoe_upgrade/dash" to="." method="_on_upgrade_pressed" binds= [NodePath("equipment/shoe_upgrade/dash")]]
+[connection signal="mouse_entered" from="equipment/attack_upgrade" to="." method="_on_button_hover" binds= [NodePath("equipment/attack_upgrade")]]
+[connection signal="pressed" from="equipment/attack_upgrade" to="." method="_on_upgrade_pressed" binds= [NodePath("equipment/attack_upgrade")]]
+[connection signal="mouse_entered" from="equipment/attack_upgrade/freeze" to="." method="_on_button_hover" binds= [NodePath("equipment/attack_upgrade/freeze")]]
+[connection signal="pressed" from="equipment/attack_upgrade/freeze" to="." method="_on_upgrade_pressed" binds= [NodePath("equipment/attack_upgrade/freeze")]]
+[connection signal="mouse_entered" from="equipment/attack_upgrade/shock" to="." method="_on_button_hover" binds= [NodePath("equipment/attack_upgrade/shock")]]
+[connection signal="pressed" from="equipment/attack_upgrade/shock" to="." method="_on_upgrade_pressed" binds= [NodePath("equipment/attack_upgrade/shock")]]
+[connection signal="mouse_entered" from="equipment/attack_upgrade/burn" to="." method="_on_button_hover" binds= [NodePath("equipment/attack_upgrade/burn")]]
+[connection signal="pressed" from="equipment/attack_upgrade/burn" to="." method="_on_upgrade_pressed" binds= [NodePath("equipment/attack_upgrade/burn")]]
 [connection signal="pressed" from="beards" to="." method="_on_tab_pressed" binds= [NodePath("beards")]]
+[connection signal="mouse_entered" from="beards/bushy_beard" to="." method="_on_button_hover" binds= [NodePath("beards/bushy_beard")]]
+[connection signal="pressed" from="beards/bushy_beard" to="." method="_on_upgrade_pressed" binds= [NodePath("beards/bushy_beard")]]
+[connection signal="mouse_entered" from="beards/long_beard" to="." method="_on_button_hover" binds= [NodePath("beards/long_beard")]]
+[connection signal="pressed" from="beards/long_beard" to="." method="_on_upgrade_pressed" binds= [NodePath("beards/long_beard")]]
 [connection signal="pressed" from="other" to="." method="_on_tab_pressed" binds= [NodePath("other")]]
 [connection signal="pressed" from="other/difficulty_tracker/minus" to="other/difficulty_tracker" method="_on_minus_pressed"]
 [connection signal="pressed" from="other/difficulty_tracker/Plus" to="other/difficulty_tracker" method="_on_plus_pressed"]
+[connection signal="mouse_entered" from="other/health_upgrade" to="." method="_on_button_hover" binds= [NodePath("other/health_upgrade")]]
+[connection signal="pressed" from="other/health_upgrade" to="." method="_on_upgrade_pressed" binds= [NodePath("other/health_upgrade")]]

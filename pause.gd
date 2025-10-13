@@ -14,7 +14,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player.alive == false:
-		quit_button.text = "Save and Quit"
+		quit_button.text = "Quit"
 	else:
 		quit_button.text = "Exit"
 
@@ -24,7 +24,7 @@ func _on_resume_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
-	if quit_button.text == "Save and Quit":
+	if quit_button.text == "Quit":
 		get_tree().quit()
 	else:
 		get_parent().pause_menu()

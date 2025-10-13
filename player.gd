@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var buff_scene = $"../buff_scene"
 @onready var level_music = $"../level_music"
 @onready var lobby_music = $"../lobby_music"
+@onready var shop_music = $"../shop_music"
 @onready var player_gold = $"../player_gold"
 @onready var root_node = $".."
 @onready var attack_node = $attack
@@ -36,6 +37,8 @@ var screen_size
 var alive
 var powers
 var abilities
+var dashing
+var dash_cooldown
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,6 +49,9 @@ func _ready() -> void:
 	current_health = health
 	reward_gold = 0
 	lobby_music.play()
+	$fireball_indicator.visible = false
+	dashing = false
+	dash_cooldown = 0
 
 # updated comment that does nothing
 
@@ -58,37 +64,45 @@ func _process(delta) -> void:
 	player_health.text = "Health: " + str(int(current_health))
 	player_gold.text = "Gold: " + str(int(gold))
 	
-	if Input.is_action_pressed("move_up"):
-		velocity.y = -1
-		direction = "back"
-	elif Input.is_action_pressed("move_down"):
-		velocity.y = 1
-		direction = "front"
-	else:
-		velocity.y = 0
+	if powers.has("fireballs"):
+		$fireball_indicator.visible = true
 	
-	if Input.is_action_pressed("move_right"):
-		velocity.x = 1
-		direction = "right"
-	elif Input.is_action_pressed("move_left"):
-		velocity.x = -1
-		direction = "left"
-	else:
-		velocity.x = 0
-	
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-		if velocity.x > 0:
-			$PlayerSprite.play("grimbly_right_walk")
-		elif velocity.x < 0:
-			$PlayerSprite.play("grimbly_left_walk")
-		if velocity.y > 0:
-			$PlayerSprite.play("grimbly_front_walk")
-		elif velocity.y < 0:
-			$PlayerSprite.play("grimbly_back_walk")
-	else:
-		$PlayerSprite.play("idle_" + direction)
+	if !dashing:
+		if Input.is_action_pressed("move_up"):
+			velocity.y = -1
+			direction = "back"
+		elif Input.is_action_pressed("move_down"):
+			velocity.y = 1
+			direction = "front"
+		else:
+			velocity.y = 0
 		
+		if Input.is_action_pressed("move_right"):
+			velocity.x = 1
+			direction = "right"
+		elif Input.is_action_pressed("move_left"):
+			velocity.x = -1
+			direction = "left"
+		else:
+			velocity.x = 0
+		
+		if velocity.length() > 0:
+			velocity = velocity.normalized() * speed
+			if velocity.x > 0:
+				$PlayerSprite.play("grimbly_right_walk")
+			elif velocity.x < 0:
+				$PlayerSprite.play("grimbly_left_walk")
+			if velocity.y > 0:
+				$PlayerSprite.play("grimbly_front_walk")
+			elif velocity.y < 0:
+				$PlayerSprite.play("grimbly_back_walk")
+		else:
+			$PlayerSprite.play("idle_" + direction)
+	
+	if abilities.has("dash") && Input.is_action_just_pressed("dash") && dash_cooldown < 0:
+		dash()
+	dash_cooldown -= 0.05
+	
 	move_and_slide()
 
 func update_speed() -> void:
@@ -127,7 +141,7 @@ func create_new_player():
 	base_speed = 200
 	base_health = 3
 	base_defense = 0
-	base_attack = 1
+	base_attack = 2
 	speed = base_speed
 	health = base_health
 	defense = base_defense
@@ -140,7 +154,7 @@ func create_new_player():
 	health_buffs = []
 	defense_buffs = []
 	attack_buffs = []
-	gold = 999
+	gold = 0
 	alive = false
 	powers = []
 	abilities = []
@@ -195,6 +209,7 @@ func _on_portal_body_entered(body: Node2D) -> void:
 	root_node.current_enemies = 0
 	root_node.level += 1
 	root_node.do_spawning()
+	root_node.do_fireballs()
 	buff_scene.visible = false
 	buff_scene.buffs_active = false
 	buff_scene.deactivate_buttons()
@@ -218,3 +233,23 @@ func _on_eddy_body_entered(body: Node2D) -> void:
 	fade_to_black.fade_in()
 	shop.visible = true
 	root_node.disable_things()
+	shop_music.play()
+
+func dash():
+	dashing = true
+	$player_collision.disabled = true
+	$PlayerSprite.play("grimbly_dash")
+	if direction == "back":
+		velocity.y = -1
+	elif  direction == "front":
+		velocity.y = 1
+	elif direction == "right":
+		velocity.x = 1
+	elif direction == "left":
+		velocity.x = -1
+	velocity = velocity.normalized() * speed * 2
+	move_and_slide()
+	await get_tree().create_timer(0.3).timeout
+	$player_collision.disabled = false
+	dashing = false
+	dash_cooldown = 2

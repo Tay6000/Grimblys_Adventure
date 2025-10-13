@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var player = $"../player"
 @onready var fade_to_black = $"../fade"
 @onready var shop_text = $shop_text
+@onready var shop_music = $"../shop_music"
 
 var tabs = []
 
@@ -30,6 +31,7 @@ func _process(delta: float) -> void:
 		player.position.x = 947
 		player.position.y = 810
 		await get_tree().create_timer(2).timeout
+		shop_music.stop()
 		root_node.enable_things()
 		fade_to_black.fade_in()
 		visible = false
@@ -42,14 +44,13 @@ func _on_upgrade_pressed(button_path: NodePath):
 		if !button.bought:
 			player.gold -= button.price
 			button.bought = true
-			shop_text.text = button.bought_description
 			for i in button.upgrades:
 				if i[0] == "stat":
 					add_upgrade(i)
 				elif i[0] == "power":
 					add_power(i)
 				elif i[0] == "ability":
-					pass
+					add_ability(i)
 				else:
 					print("somethings wrong, no upgrade type")
 	else:
