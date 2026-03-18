@@ -1,7 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://d0cobauyu36dg"]
+[gd_scene format=3 uid="uid://d0cobauyu36dg"]
 
 [ext_resource type="Script" uid="uid://tilijiokuxa" path="res://world.gd" id="1_dwbse"]
-[ext_resource type="PackedScene" uid="uid://dgd20gmn6koc2" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://dgd20gmn6koc2" path="res://Player.tscn" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://boxhtkxbu0efr" path="res://Sprites/cave_level.jpeg" id="1_tlwt5"]
 [ext_resource type="Script" uid="uid://c7yj4nue6vcbk" path="res://cave.gd" id="2_036b0"]
 [ext_resource type="PackedScene" uid="uid://dqppcn4hlofaq" path="res://fireball.tscn" id="3_26xuy"]
@@ -125,13 +125,13 @@ _data = {
 &"fade_out": SubResource("Animation_gbfbk")
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=1189453903]
 scale = Vector2(0.667, 0.667)
 script = ExtResource("1_dwbse")
 monster1 = ExtResource("6_gbfbk")
 fireball = ExtResource("3_26xuy")
 
-[node name="cave" type="AnimatedSprite2D" parent="."]
+[node name="cave" type="AnimatedSprite2D" parent="." unique_id=2089093838]
 position = Vector2(960, 539.75)
 scale = Vector2(1.133412, 1.133788)
 sprite_frames = SubResource("SpriteFrames_tlwt5")
@@ -139,32 +139,32 @@ animation = &"cave_lobby"
 script = ExtResource("2_036b0")
 metadata/_edit_lock_ = true
 
-[node name="border" type="StaticBody2D" parent="."]
+[node name="border" type="StaticBody2D" parent="." unique_id=1977642359]
 metadata/_edit_lock_ = true
 
-[node name="left" type="CollisionShape2D" parent="border"]
+[node name="left" type="CollisionShape2D" parent="border" unique_id=2029615837]
 shape = SubResource("WorldBoundaryShape2D_f3sb7")
 metadata/_edit_lock_ = true
 
-[node name="top" type="CollisionShape2D" parent="border"]
+[node name="top" type="CollisionShape2D" parent="border" unique_id=729292838]
 shape = SubResource("WorldBoundaryShape2D_fj7yv")
 metadata/_edit_lock_ = true
 
-[node name="down" type="CollisionShape2D" parent="border"]
+[node name="down" type="CollisionShape2D" parent="border" unique_id=2145618701]
 position = Vector2(1920, 1080)
 shape = SubResource("WorldBoundaryShape2D_tlwt5")
 metadata/_edit_lock_ = true
 
-[node name="right" type="CollisionShape2D" parent="border"]
+[node name="right" type="CollisionShape2D" parent="border" unique_id=2007707084]
 position = Vector2(1920, 1080)
 shape = SubResource("WorldBoundaryShape2D_aqk2v")
 metadata/_edit_lock_ = true
 
-[node name="portal" type="Area2D" parent="."]
+[node name="portal" type="Area2D" parent="." unique_id=2034198357]
 script = ExtResource("3_tlwt5")
 metadata/_edit_lock_ = true
 
-[node name="portal_sprite" type="AnimatedSprite2D" parent="portal"]
+[node name="portal_sprite" type="AnimatedSprite2D" parent="portal" unique_id=1095103032]
 position = Vector2(982, 544)
 scale = Vector2(0.43, 0.43)
 sprite_frames = SubResource("SpriteFrames_aqk2v")
@@ -172,41 +172,41 @@ animation = &"portal_on"
 frame_progress = 0.018385915
 metadata/_edit_lock_ = true
 
-[node name="portal_collision" type="CollisionShape2D" parent="portal"]
+[node name="portal_collision" type="CollisionShape2D" parent="portal" unique_id=172928876]
 position = Vector2(955, 535)
 shape = SubResource("CapsuleShape2D_hiqwa")
 metadata/_edit_lock_ = true
 
-[node name="eddy" type="Area2D" parent="."]
+[node name="eddy" type="Area2D" parent="." unique_id=468358566]
 script = ExtResource("17_ikiii")
 metadata/_edit_lock_ = true
 
-[node name="eddy_sprite" type="Sprite2D" parent="eddy"]
+[node name="eddy_sprite" type="Sprite2D" parent="eddy" unique_id=1148157515]
 position = Vector2(1573.0001, 115)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("17_udxuc")
 metadata/_edit_lock_ = true
 
-[node name="eddy_collision" type="CollisionShape2D" parent="eddy"]
+[node name="eddy_collision" type="CollisionShape2D" parent="eddy" unique_id=181476955]
 position = Vector2(1579.5, 115)
 shape = SubResource("RectangleShape2D_26xuy")
 
-[node name="player" parent="." instance=ExtResource("1_f3sb7")]
+[node name="player" parent="." unique_id=437633406 instance=ExtResource("1_f3sb7")]
 position = Vector2(947, 810)
 scale = Vector2(4, 4)
 
-[node name="buff_scene" parent="." instance=ExtResource("10_wse8f")]
+[node name="buff_scene" parent="." unique_id=1064661727 instance=ExtResource("10_wse8f")]
 visible = false
 
-[node name="shop" parent="." instance=ExtResource("19_cbp6q")]
+[node name="shop" parent="." unique_id=1788481099 instance=ExtResource("19_cbp6q")]
 visible = false
 
-[node name="fade" type="CanvasLayer" parent="."]
+[node name="fade" type="CanvasLayer" parent="." unique_id=1356989207]
 layer = 2
 visible = false
 script = ExtResource("7_pkg7o")
 
-[node name="ColorRect" type="ColorRect" parent="fade"]
+[node name="ColorRect" type="ColorRect" parent="fade" unique_id=1602834557]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -216,12 +216,10 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="fade"]
-libraries = {
-&"": SubResource("AnimationLibrary_ic0uy")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fade" unique_id=1145551589]
+libraries/ = SubResource("AnimationLibrary_ic0uy")
 
-[node name="player_health" type="Label" parent="."]
+[node name="player_health" type="Label" parent="." unique_id=1166144722]
 offset_left = 15.0
 offset_top = 16.0
 offset_right = 714.0
@@ -231,7 +229,7 @@ theme_override_font_sizes/font_size = 120
 text = "health"
 metadata/_edit_lock_ = true
 
-[node name="player_gold" type="Label" parent="."]
+[node name="player_gold" type="Label" parent="." unique_id=759043838]
 offset_left = 14.0
 offset_top = 16.0
 offset_right = 713.0
@@ -241,32 +239,32 @@ theme_override_font_sizes/font_size = 120
 text = "gold"
 metadata/_edit_lock_ = true
 
-[node name="spawner1" type="Marker2D" parent="."]
+[node name="spawner1" type="Marker2D" parent="." unique_id=752484838]
 position = Vector2(386, 193)
 metadata/_edit_lock_ = true
 
-[node name="spawner2" type="Marker2D" parent="."]
+[node name="spawner2" type="Marker2D" parent="." unique_id=18864815]
 position = Vector2(1586, 195)
 metadata/_edit_lock_ = true
 
-[node name="spawner3" type="Marker2D" parent="."]
+[node name="spawner3" type="Marker2D" parent="." unique_id=137651614]
 position = Vector2(387, 886)
 metadata/_edit_lock_ = true
 
-[node name="spawner4" type="Marker2D" parent="."]
+[node name="spawner4" type="Marker2D" parent="." unique_id=1137495517]
 position = Vector2(1573, 882)
 metadata/_edit_lock_ = true
 
-[node name="lobby_music" type="AudioStreamPlayer2D" parent="."]
+[node name="lobby_music" type="AudioStreamPlayer2D" parent="." unique_id=910150350]
 stream = ExtResource("17_bc84e")
 
-[node name="level_music" type="AudioStreamPlayer2D" parent="."]
+[node name="level_music" type="AudioStreamPlayer2D" parent="." unique_id=321391489]
 stream = ExtResource("18_bc84e")
 
-[node name="shop_music" type="AudioStreamPlayer2D" parent="."]
+[node name="shop_music" type="AudioStreamPlayer2D" parent="." unique_id=1887977878]
 stream = ExtResource("19_wukud")
 
-[node name="pause" parent="." instance=ExtResource("20_26xuy")]
+[node name="pause" parent="." unique_id=1600296146 instance=ExtResource("20_26xuy")]
 visible = false
 offset_left = 960.0
 offset_top = 539.0
@@ -276,7 +274,7 @@ scale = Vector2(1.5, 1.5)
 size_flags_horizontal = 8
 metadata/_edit_lock_ = true
 
-[node name="settings" parent="." instance=ExtResource("21_bc84e")]
+[node name="settings" parent="." unique_id=672448344 instance=ExtResource("21_bc84e")]
 visible = false
 z_index = 10
 anchors_preset = 8
@@ -291,7 +289,7 @@ offset_bottom = 539.0
 scale = Vector2(1.5, 1.5)
 size_flags_horizontal = 4
 
-[node name="test" type="Label" parent="."]
+[node name="test" type="Label" parent="." unique_id=517686901]
 offset_left = 17.991001
 offset_top = 154.42279
 offset_right = 289.35532

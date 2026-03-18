@@ -218,7 +218,10 @@ func _on_portal_body_entered(body: Node2D) -> void:
 	position.y = 810
 	fade_to_black.fade_in()
 	lobby_music.stop()
-	level_music.play()
+	if level_music.is_playing():
+		
+		pass
+	else: level_music.play()
 	
 func _on_level_music_finished():
 	level_music.play()
