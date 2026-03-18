@@ -152,7 +152,7 @@ func create_new_player():
 	health_buffs = []
 	defense_buffs = []
 	attack_buffs = []
-	gold = 3000
+	gold = 0
 	alive = false
 	powers = []
 	abilities = []
