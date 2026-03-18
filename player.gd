@@ -152,7 +152,7 @@ func create_new_player():
 	health_buffs = []
 	defense_buffs = []
 	attack_buffs = []
-	gold = 0
+	gold = 3000
 	alive = false
 	powers = []
 	abilities = []
@@ -218,7 +218,10 @@ func _on_portal_body_entered(body: Node2D) -> void:
 	position.y = 810
 	fade_to_black.fade_in()
 	lobby_music.stop()
-	level_music.play()
+	if level_music.is_playing():
+		pass
+	else:
+		level_music.play()
 	
 func _on_level_music_finished():
 	level_music.play()
@@ -239,6 +242,7 @@ func _on_eddy_body_entered(body: Node2D) -> void:
 func dash():
 	dashing = true
 	$player_collision.disabled = true
+	$attack/attack_collision.disabled = false
 	$PlayerSprite.play("grimbly_dash")
 	if direction == "back":
 		velocity.y = -1
@@ -252,5 +256,6 @@ func dash():
 	move_and_slide()
 	await get_tree().create_timer(0.3).timeout
 	$player_collision.disabled = false
+	$attack/attack_collision.disabled = true
 	dashing = false
 	dash_cooldown = 2

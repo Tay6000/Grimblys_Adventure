@@ -27,22 +27,24 @@ func _process(delta: float) -> void:
 		aspect = "shock"
 		$attack_sprite.modulate = Color(1, 1, 0)
 	
+	if player.direction == "back":
+		rotation = 0
+	elif player.direction == "front":
+		rotation = 3.14159
+	elif player.direction == "right":
+		rotation = 1.5708
+	elif player.direction == "left":
+		rotation = -1.5708
+	
 	if Input.is_action_just_pressed("attack") && root_node.paused == false:
-		
-		if player.direction == "back":
-			rotation = 0
-		elif player.direction == "front":
-			rotation = 3.14159
-		elif player.direction == "right":
-			rotation = 1.5708
-		elif player.direction == "left":
-			rotation = -1.5708
 		
 		$attack_sprite.visible = true
 		$attack_sprite.play("slash")
 	
 	if $attack_sprite.frame > 2 && $attack_sprite.frame < 8:
 		$attack_collision.disabled = false
+	elif player.dashing == true:
+		pass
 	else:
 		$attack_collision.disabled = true
 

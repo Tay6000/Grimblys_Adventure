@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dgd20gmn6koc2"]
+[gd_scene format=3 uid="uid://dgd20gmn6koc2"]
 
 [ext_resource type="Script" uid="uid://bev7bdwt4q82m" path="res://player.gd" id="1_hqtel"]
 [ext_resource type="Texture2D" uid="uid://bu0epb52ltkmo" path="res://Sprites/Grimbly_sprites.png" id="2_onrkg"]
@@ -305,29 +305,29 @@ height = 48.800007
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jxqw"]
 size = Vector2(21.800003, 21.2)
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" unique_id=1737331540]
 scale = Vector2(5, 5)
 script = ExtResource("1_hqtel")
 metadata/_edit_lock_ = true
 
-[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="." unique_id=1523206639]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_dw050")
 animation = &"grimbly_front_walk"
 frame_progress = 0.28505582
 metadata/_edit_lock_ = true
 
-[node name="player_collision" type="CollisionShape2D" parent="."]
+[node name="player_collision" type="CollisionShape2D" parent="." unique_id=336515869]
 position = Vector2(1.1920929e-07, 2.2000003)
 scale = Vector2(5, 5)
 shape = SubResource("CapsuleShape2D_b26j0")
 
-[node name="attack" type="Area2D" parent="."]
+[node name="attack" type="Area2D" parent="." unique_id=705471870]
 z_index = 1
 z_as_relative = false
 script = ExtResource("3_hqtel")
 
-[node name="attack_sprite" type="AnimatedSprite2D" parent="attack"]
+[node name="attack_sprite" type="AnimatedSprite2D" parent="attack" unique_id=1549484609]
 position = Vector2(0.6000002, -20.000002)
 rotation = -2.3561945
 scale = Vector2(0.10156247, 0.10362765)
@@ -336,32 +336,32 @@ animation = &"slash"
 frame = 9
 frame_progress = 1.0
 
-[node name="attack_collision" type="CollisionShape2D" parent="attack"]
+[node name="attack_collision" type="CollisionShape2D" parent="attack" unique_id=141408637]
 position = Vector2(0.6, -24.400002)
 rotation = 1.5707964
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("CapsuleShape2D_hqtel")
 disabled = true
 
-[node name="razor_hat" type="Area2D" parent="."]
+[node name="razor_hat" type="Area2D" parent="." unique_id=1650061127]
 script = ExtResource("5_2hs0m")
 
-[node name="razor_sprite" type="Sprite2D" parent="razor_hat"]
+[node name="razor_sprite" type="Sprite2D" parent="razor_hat" unique_id=173245283]
 position = Vector2(0.19999981, -35.2)
 scale = Vector2(0.21132815, 0.18437496)
 texture = ExtResource("6_1jxqw")
 region_enabled = true
 region_rect = Rect2(110, 240, 105, 115)
 
-[node name="razor_collision" type="CollisionShape2D" parent="razor_hat"]
+[node name="razor_collision" type="CollisionShape2D" parent="razor_hat" unique_id=1752565381]
 position = Vector2(-0.09999947, -35.199993)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_1jxqw")
 
-[node name="fireball_indicator" type="Area2D" parent="."]
+[node name="fireball_indicator" type="Area2D" parent="." unique_id=230835559]
 script = ExtResource("7_1jxqw")
 
-[node name="fireball_indicator_sprite" type="Sprite2D" parent="fireball_indicator"]
+[node name="fireball_indicator_sprite" type="Sprite2D" parent="fireball_indicator" unique_id=770032444]
 position = Vector2(1.8511766e-07, -27.165003)
 rotation = -1.5707964
 scale = Vector2(0.04569511, 0.03398438)

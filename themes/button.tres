@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://cm4xd3vagcyei"]
+[gd_resource type="Theme" format=3 uid="uid://cm4xd3vagcyei"]
 
 [ext_resource type="FontFile" uid="uid://blmhqmi7xa24l" path="res://Sprites/KiwiSoda.ttf" id="1_dpjbf"]
 [ext_resource type="Texture2D" uid="uid://kulo61ibljmd" path="res://Sprites/buttons.png" id="2_s8pfl"]
